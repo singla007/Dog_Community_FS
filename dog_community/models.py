@@ -34,7 +34,20 @@ class user_table(models.Model):
     user_address = models.CharField(max_length=20000)
     user_contact = models.CharField(max_length=255)
     user_email = models.CharField(max_length=255)
-
 class events(models.Model):
     event_ID = models.IntegerField()
-    event_location = models.
+    event_location = models.CharField(max_length=20000)
+    event_time = models.DateTimeField()
+    event_duration = models.IntegerField()
+    event_capacity = models.IntegerField()
+    event_description = models.CharField(max_length=20000)
+
+class event_subscriptions(models.Model):
+    user_ID = models.IntegerField()
+    event_Id = models.IntegerField()
+    subscription_ID = models.IntegerField()
+
+class admin(models.Model):
+    admin_ID = models.IntegerField()
+    admin_login_ID = models.CharField(max_length=255)
+    admin_login_pass = models.CharField(max_length=255)
