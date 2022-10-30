@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dog_community_app'
+    'dog_community_app',
+    'custom_admin_portal'
 ]
 
 MIDDLEWARE = [
@@ -77,11 +78,11 @@ WSGI_APPLICATION = 'dog_community.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dog_community',
+        'NAME': 'dog_communitydb',
         'USER': 'root',
         'HOST':'localhost',
         'PORT':'3306',
-        'PASSWORD':'****'
+        'PASSWORD':'admin'
     }
 }
 
