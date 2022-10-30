@@ -11,14 +11,14 @@ class Breed(models.Model):
 class Dogs(models.Model):
     dog_id = models.IntegerField(primary_key=True)
     breed = models.ForeignKey(Breed, on_delete=models.DO_NOTHING)
-    is_adopted = models.IntegerField()
+    is_adopted = models.BooleanField()
     dog_name = models.CharField(max_length=255)
     dog_color = models.CharField(max_length=255)
     dog_age = models.IntegerField()
-    is_disable = models.IntegerField()
+    is_disable = models.BooleanField()
     disabilty = models.CharField(max_length=5000)
     unique_identification = models.CharField(max_length=5000)
-    is_adoption_ready = models.IntegerField()
+    is_adoption_ready = models.BooleanField()
 
 
 class EventSubscriptions(models.Model):
@@ -29,27 +29,27 @@ class EventSubscriptions(models.Model):
 
 class Events(models.Model):
     event_id = models.IntegerField(primary_key=True)
-    event_location = models.CharField(max_length=5000)
+    event_location = models.CharField(max_length=20000)
     event_time = models.DateTimeField()
     event_duration = models.IntegerField()
     event_capacity = models.IntegerField()
-    event_description = models.CharField(max_length=8000)
+    event_description = models.CharField(max_length=20000)
 
 
 class Reports(models.Model):
     dog = models.ForeignKey(Dogs, on_delete=models.DO_NOTHING)
     breed = models.ForeignKey(Breed, on_delete=models.DO_NOTHING)
     reporter = models.ForeignKey('User', on_delete=models.DO_NOTHING)
-    last_known_location = models.CharField(max_length=10000)
+    last_known_location = models.CharField(max_length=20000)
     category = models.CharField(max_length=255)
 
 
 class User(models.Model):
     user_id = models.IntegerField(primary_key=True)
     field_user_name = models.CharField(max_length=255)
-    user_address = models.CharField(max_length=5000)
-    user_contact = models.CharField(max_length=255)
-    user_email = models.CharField(max_length=255)
+    user_address = models.CharField(max_length=20000)
+    user_contact = models.CharField(max_length=20)
+    user_email = models.EmailField(max_length=255)
 
 class Admin(models.Model):
     admin_id = models.IntegerField(primary_key=True)
