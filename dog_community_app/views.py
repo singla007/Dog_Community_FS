@@ -80,3 +80,15 @@ def home_view(request):
     return render(request, "index.html")
 def aboutus_view(request):
     return render(request, "aboutus.html")
+def breedinfo_view(request):
+    return render(request, "breedinfo.html")
+def reportadog(request):
+    return render(request, "reportadog.html")
+def meetup_view(request):
+    return render(request, "meetup.html")
+def adoption_view(request):
+    return render(request, "adoption.html")
+def contact_view(request):
+    return render(request, "contact.html")
+
+
