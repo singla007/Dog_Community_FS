@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('customadmin/', include('custom_admin_portal.urls')),
+    path('', include('dog_community_app.urls'))
 ]
