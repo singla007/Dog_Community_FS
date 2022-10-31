@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
+from dog_community_app.models import Admin
 
 # Create your views here.
 def admin_login(request):
@@ -9,6 +10,7 @@ def admin_login(request):
     password = request.POST.get("password")
     print(login_id)
     print(password)
-    # user_obj = Admin.objects.filter(login_id = login_id)
+    user_obj = Admin.objects.filter(login_id = login_id)
+    
 
     return render(request, 'login.html')
