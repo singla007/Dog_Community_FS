@@ -477,3 +477,7 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+.contact-us-sec {
+    background-color: #FF6F0F;
+}
