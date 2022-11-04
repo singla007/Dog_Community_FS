@@ -55,3 +55,9 @@ class Admin(models.Model):
     admin_id = models.IntegerField(primary_key=True)
     admin_login_id = models.CharField(max_length=255)
     admin_login_pass = models.CharField(max_length=255)
+
+
+class Team(models.Model):
+    member_id = models.IntegerField(primary_key=True)
+    full_name = models.CharField(max_length=255)
+    designation = models.CharField(max_length=255)

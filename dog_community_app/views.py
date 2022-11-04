@@ -1,4 +1,5 @@
 from datetime import datetime
+from .models import Team
 
 from django.shortcuts import (get_object_or_404,
                               render,
@@ -77,7 +78,8 @@ from django.views import View
 # function based
 
 def home_view(request):
-    return render(request, "index.html")
+    team_members = Team.objects.all()
+    return render(request, "index.html",{"team_members":team_members})
 def aboutus_view(request):
     return render(request, "aboutus.html")
 def breedinfo_view(request):
