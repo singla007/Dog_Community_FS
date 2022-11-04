@@ -1,0 +1,57 @@
+<Html>  
+    <head>   
+    <title>  
+    Registration Page  
+    </title>  
+    </head>  
+    <body bgcolor="Lightskyblue">  
+    <br>  
+    <br>  
+    <form action="register" method="post">  
+    {% csrf_token %}
+    <!-- <label> Firstname </label>         
+    <input type="text" name="firstname" size="15"/> <br> <br>  
+    <label> Middlename: </label>     
+    <input type="text" name="middlename" size="15"/> <br> <br>  
+    <label> Lastname: </label>         
+    <input type="text" name="lastname" size="15"/> <br> <br>   -->
+      
+      
+    <br>  
+    <br>  
+    <label> Login ID: </label>         
+    <input type="text" name="login_id" size="15"/> <br> <br>  
+    <br>  
+    <label> Username: </label>         
+    <input type="text" name="username" size="15"/> <br> <br>  
+    <!-- <label>   
+    Gender :  
+    </label><br>  
+    <input type="radio" name="male"/> Male <br>  
+    <input type="radio" name="female"/> Female <br>  
+    <input type="radio" name="other"/> Other   -->
+    <br>  
+    <br>  
+      
+    <label>   
+    Phone :  
+    </label>  
+    <input type="text" name="country code"  value="+91" size="2"/>   
+    <input type="text" name="user_contact" size="10"/> <br> <br>  
+    Address  
+    <br>  
+    <textarea cols="80" rows="5" value="user_address" name="user_address">  
+    </textarea>  
+    <br> <br>  
+    Email:  
+    <input type="email" id="email" name="user_email"/> <br>    
+    <br> <br>  
+    Password:  
+    <input type="Password" id="password" name="password"> <br>   
+    <br> <br>  
+    Re-type password:  
+    <input type="Password" id="repassword" name="repassword"> <br> <br>  
+    <input type="submit" value="Submit"/>  
+    </form>  
+    </body>  
+    </html>  
