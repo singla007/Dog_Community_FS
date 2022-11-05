@@ -4,9 +4,8 @@ from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
 
-from django.views.generic.edit import (CreateView, UpdateView, DeleteView, FormView)
-from django.views.generic.detail import DetailView
-
+# importing forms
+from .forms import ContactUsForm, NewsletterForm
 
 # Create your views here.
 
@@ -16,74 +15,24 @@ from django.views.generic.list import ListView
 
 from django.views import View
 
-# class MyView(View):
-#     def get(self, request):
-#         # <view logic>
-#         return HttpResponse('result')
-
-# class GeeksCreate(CreateView):
-#     # specify the model for create view
-#     model = GeeksModel
-#     # specify the fields to be displayed
-#     fields = ['title', 'description']
-#     def form_valid(self, form) -> HttpResponse:
-#         form.save()
-#         return HttpResponseRedirect("/")
-
-# class GeeksList(ListView):
-#     # specify the model for list view
-#     model = GeeksModel
-
-# class GeeksDetailView(DetailView):
-#     # specify the model to use
-#     model = GeeksModel
-
-# class GeeksUpdateView(UpdateView):
-#     # specify the model you want to use
-#     model = GeeksModel
- 
-#     # specify the fields
-#     fields = [
-#         "title",
-#         "description"
-#     ]
- 
-#     # can specify success url
-#     # url to redirect after successfully
-#     # updating details
-#     success_url ="/get/"
-
-# class GeeksDeleteView(DeleteView):
-#     # specify the model you want to use
-#     model = GeeksModel
-     
-#     # can specify success url
-#     # url to redirect after successfully
-#     # deleting object
-#     success_url ="/get/"
-
-# class GeeksFormView(FormView):
-#     # specify the Form you want to use
-#     form_class = GeeksForm
-     
-#     # specify name of template
-#     template_name = "geeks / geeksmodel_form.html"
- 
-#     # can specify success url
-#     # url to redirect after successfully
-#     # updating details
-#     success_url ="/thanks/"
-
-# function based
-
 def home_view(request):
+    contact_form = ContactUsForm(request.POST or None)
+    newsletter_form = NewsletterForm(request.POST or None)
+    if(contact_form.is_valid):
+        print(contact_form)
+        # contact_form.save()
+    if(newsletter_form.is_valid):
+        print(newsletter_form)
+        # newsletter_form.save()
     return render(request, "index.html")
 def aboutus_view(request):
     return render(request, "aboutus.html")
 def breedinfo_view(request):
     return render(request, "breedinfo.html")
-def reportadog(request):
-    return render(request, "reportadog.html")
+def report_missing_dogs_view(request):
+    return render(request, "missing_dogs.html")
+def report_stray_dogs_view(request):
+    return render(request, "stray_dogs.html")
 def meetup_view(request):
     return render(request, "meetup.html")
 def adoption_view(request):

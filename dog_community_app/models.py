@@ -55,3 +55,11 @@ class Admin(models.Model):
     admin_id = models.AutoField(primary_key=True)
     admin_login_id = models.CharField(max_length=255)
     admin_login_pass = models.CharField(max_length=255)
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    message = models.CharField(max_length = 2000)
+
+class Newsletter(models.Model):
+    email = models.EmailField(max_length=255)
