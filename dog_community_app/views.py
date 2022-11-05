@@ -1,4 +1,5 @@
 from datetime import datetime
+from .models import Team
 
 from django.shortcuts import (get_object_or_404,
                               render,
@@ -24,7 +25,8 @@ def home_view(request):
     if(newsletter_form.is_valid):
         print(newsletter_form)
         # newsletter_form.save()
-    return render(request, "index.html")
+    team_members = Team.objects.all()
+    return render(request, "index.html",{"team_members":team_members})
 def aboutus_view(request):
     return render(request, "aboutus.html")
 def breedinfo_view(request):

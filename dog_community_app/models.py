@@ -45,16 +45,22 @@ class Reports(models.Model):
 
 
 class User(models.Model):
-    user_id = models.AutoField(primary_key=True)
+    user_id = models.IntegerField(primary_key=True)
     field_user_name = models.CharField(max_length=255)
     user_address = models.CharField(max_length=5000)
     user_contact = models.CharField(max_length=20)
     user_email = models.EmailField(max_length=255)
 
 class Admin(models.Model):
-    admin_id = models.AutoField(primary_key=True)
+    admin_id = models.IntegerField(primary_key=True)
     admin_login_id = models.CharField(max_length=255)
     admin_login_pass = models.CharField(max_length=255)
+
+
+class Team(models.Model):
+    member_id = models.IntegerField(primary_key=True)
+    full_name = models.CharField(max_length=255)
+    designation = models.CharField(max_length=255)
 
 class ContactUs(models.Model):
     name = models.CharField(max_length=255)
