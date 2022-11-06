@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container position-relative page-top" data-aos="zoom-out-up">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+            <div class="card mb-5">
+                <div class="card-body p-sm-5">
+                    <h2 class="text-center mb-4" style="padding-bottom: 0px;">Dog information</h2>
+                    <form method="post">
+                        <div class="mb-3"><input class="form-control" type="text" id="name-2" name="name" placeholder="Name"></div>
+                        <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Breed"></div>
+                        <div class="mb-3"><input class="form-control" type="email" id="email-2" name="email" placeholder="Last seen" style="margin-top: 7px;padding-bottom: 9px;margin-bottom: 16px;"></div>
+                        <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Description"></textarea></div>
+                        <div class="mb-3"><input class="form-control" type="tel" name="name" placeholder="Contact info."></div>
+                        <div class="mb-3"><input class="form-control" type="file"></div>
+                        <div><button class="btn btn-primary d-block w-100" type="submit">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

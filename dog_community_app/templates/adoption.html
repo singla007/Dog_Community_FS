@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<section id="hero" class="d-flex align-items-center position-relative">
+    <img class="w-100 h-100"  src="{%static "assets/img/unsplash_hero_aboutus.png" %}" alt="Image">
+    <div class="carousel-caption">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7 pt-5">
+                    <h1 class="display-4 text-white mb-3 animated slideInDown">About Us</h1>
+                    <p class="fs-5 text-white-50 mb-5 animated slideInDown">We are a very small team dedicated to help dogs community</p>
+                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="">
+                        Learn more
+                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

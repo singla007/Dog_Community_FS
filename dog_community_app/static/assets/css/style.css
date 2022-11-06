@@ -1,9 +1,25 @@
 /********** Template CSS **********/
 :root {
     --primary: #FF6F0F;
-    --secondary: #FFF0E6;
+    --secondary: #F5DBBB;
     --light: #F8F8F9;
     --dark: #001D23;
+}
+
+.custom-primary-color {
+    color: rgb(255,111,15) !important;
+}
+
+img{
+    object-fit: cover;
+}
+
+a {
+    color: white !important;
+}
+
+.border-primary {
+    border-color: rgb(255,111,15)!important;
 }
 
 .back-to-top {
@@ -14,31 +30,36 @@
     z-index: 99;
 }
 
-.rounded-pill {
-    background-color: #FF6F0F !important;
-    color: white !important;
-    font-size: 24px;
-}
 .btn-primary {
     --bs-bg-opacity: 1;
     background-color: rgb(255,111,15)!important;
+    border-color: #F5DBBB !important;
+    outline: none;
+    color: white;
 }
 
 .btn-primary:hover {
     --bs-bg-opacity: 1;
     background-color: transparent!important;
+    color: rgb(255,111,15)!important;
+    border-color: #FF6F0F !important;
+    border-width: 2px;
 }
 
 .btn-outline-primary {
     --bs-bg-opacity: 1;
     background-color: rgb(255,111,15)!important;
     color: white !important;
+    border-color: #F5DBBB !important;
+    outline: none;
 }
 
 .btn-outline-primary:hover {
     --bs-bg-opacity: 1;
     background-color: transparent!important;
     color: rgb(255,111,15)!important;
+    border-width: 2px;
+    border-color: #FF6F0F !important;
 }
 
 .bg-primary {
@@ -46,6 +67,17 @@
     background-color: rgb(255,111,15)!important;
 }
 
+.text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(255,111,15)!important;
+}
+
+.rounded-pill {
+    background-color: #FF6F0F !important;
+    color: white !important;
+    font-size: 24px;
+    padding: 10px 30px !important;
+}
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -67,7 +99,7 @@
     transition: .5s;
 }
 
-.btn.btn-primary,
+/* .btn.btn-primary,
 .btn.btn-outline-primary:hover {
     color: #FFFFFF;
 }
@@ -75,7 +107,7 @@
 .btn.btn-primary:hover {
     color: var(--primary);
     background: transparent;
-}
+} */
 
 .btn-square {
     width: 38px;
@@ -106,6 +138,11 @@
 /*** Navbar ***/
 .fixed-top {
     transition: .5s;
+}
+
+.bg-initial {
+    --bs-bg-opacity: 1;
+    background-color: rgba(0, 29, 35, .4);
 }
 
 .top-bar {
@@ -166,6 +203,10 @@
     }
 }
 
+.page-top {
+    margin-top: 200px;
+}
+
 
 /*** Header ***/
 .carousel-caption {
@@ -180,6 +221,12 @@
     background: rgba(0, 29, 35, .8);
     z-index: 1;
 }
+#header-carousel img {
+    height: 100vh;
+    object-fit: cover;
+}
+
+#header-carousel 
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -222,32 +269,9 @@
 
 
 /*** Causes ***/
-.causes-item .progress {
-    height: 5px;
-    border-radius: 0;
-    overflow: visible;
-}
-
-.causes-item .progress .progress-bar {
-    position: relative;
-    overflow: visible;
-    width: 0px;
-    border-radius: 0;
-    transition: 5s;
-}
-
-.causes-item .progress .progress-bar span {
-    position: absolute;
-    top: -7px;
-    right: 0;
-    width: 40px;
-    height: 19px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    background: var(--primary);
-    color: #FFFFFF;
+#causes .img-fluid {
+    width: 500px;
+    height: 360px;
 }
 
 .causes-item .causes-overlay {
@@ -275,14 +299,36 @@
 .service-item {
     box-shadow: 0 0 45px rgba(0, 0, 0, .06);
 }
+.service-item .img-fluid{
+    width: 140px;
+}
+.service-title {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 30px;
+    line-height: 26px;
+}
+
+/*** Contact Us ****/
+.contact-us-sec {
+    background-color: #FF6F0F;
+}
+#contact-us img {
+    height: 800px;
+    max-height: 80%;
+}
+#contact-us form {
+    margin-block-end: 0.5rem;
+}
 
 
-/*** Donate ***/
-.donate {
+/*** Adopt ***/
+.adopt {
     background: rgba(0, 29, 35, .8);
 }
 
-.btn-group .btn-light:hover,
+.adopt .btn-group .btn-light:hover,
 .btn-group input[type="radio"]:checked+label {
     color: var(--primary);
     border-color: var(--primary);
@@ -439,14 +485,7 @@
     transition: .3s;
 }
 
-.footer .btn.btn-link::before {
-    position: relative;
-    content: "\f105";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: rgba(255,255,255,0.5);
-    margin-right: 10px;
-}
+
 
 .footer .btn.btn-link:hover {
     color: var(--light);
@@ -476,8 +515,4 @@
 
 .footer .copyright a:hover {
     color: var(--primary);
-}
-
-.contact-us-sec {
-    background-color: #FF6F0F;
 }

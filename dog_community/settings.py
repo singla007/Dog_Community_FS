@@ -126,9 +126,10 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+# https://docs.djangoproject.com/en/3.2/howto/static-files/s
 
 STATIC_URL = 'dog_community_app/static/'
+STATIC_ROOT = 'dog_community/'
 STATICFILES_DIRS = [BASE_DIR/ 'dog_community_app/static']
 
 # Default primary key field type

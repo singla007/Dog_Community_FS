@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
-
-{% block content %}
 {% load static %}
+{% block content %}
+
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+    <section id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="w-100" src="{%static "assets/img/carousel-1.png" %}" alt="Image">
+                <img class="w-100 carousel-image" src="{%static "assets/img/carousel-1.png" %}" alt="Image">
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="{%static "assets/img/carousel-2.jpg" %}" alt="Image">
+                <img class="w-100 carousel-image" src="{%static "assets/img/carousel-2.jpg" %}" alt="Image">
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -55,13 +55,13 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>
+    </section>
 </div>
 <!-- Carousel End -->
 
 <!-- Causes Start -->
-<div class="container-xxl bg-light my-5 py-5">
-    <div class="container py-5">
+<div class="container-fluid bg-light py-3">
+    <section id="causes" class="container py-5">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Have you seen me?</div>
             <h1 class="display-6 mb-5">Every dog deserves to live better</h1>
@@ -131,7 +131,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 <!-- Causes End -->
 
@@ -147,9 +147,9 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
                     <img class="img-fluid mb-4" src="{%static "assets/img/icon-1.png" %}" alt="">
-                    <h4 class="mb-3">Adoption</h4>
-                    <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                    <a class="btn btn-outline-primary px-3" href="">
+                    <h4 class="mb-3 service-title">Adoption</h4>
+                    <p class="mb-4 service-desc">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
+                    <a class="btn btn-outline-primary px-3 service-button" href="">
                         Learn More
                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>
@@ -160,9 +160,9 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
                     <img class="img-fluid mb-4" src="{%static "assets/img/icon-2w.png" %}" alt="">
-                    <h4 class="mb-3">Reporting a dog</h4>
-                    <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                    <a class="btn btn-outline-primary px-3" href="">
+                    <h4 class="mb-3 service-title">Reporting a dog</h4>
+                    <p class="mb-4 service-desc">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
+                    <a class="btn btn-outline-primary px-3 service-button" href="">
                         Learn More
                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>
@@ -173,9 +173,9 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
                     <img class="img-fluid mb-4" src="{%static "assets/img/icon-3.png" %}" alt="">
-                    <h4 class="mb-3">Meetups</h4>
-                    <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                    <a class="btn btn-outline-primary px-3" href="">
+                    <h4 class="mb-3 service-title">Meetups</h4>
+                    <p class="mb-4 service-desc">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
+                    <a class="btn btn-outline-primary px-3 service-button" href="">
                         Learn More
                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>
@@ -201,9 +201,8 @@
 </div>
 <!-- Service End -->
 
-
-<!-- Donate Start -->
-<div class="container-fluid donate my-5 py-5" data-parallax="scroll" data-image-src="{%static "assets/img/carousel-2.jpg" %}">
+<!-- Adopt Start -->
+<div class="container-fluid adopt my-5 py-5" data-parallax="scroll" data-image-src="{%static "assets/img/carousel-2.jpg" %}">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -242,7 +241,7 @@
         </div>
     </div>
 </div>
-<!-- Donate End -->
+<!-- Adopt End -->
 
 
 <!-- Team Start -->
@@ -330,7 +329,7 @@
     <div class="container position-relative">
         <div class="row">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2 class="text-white">Contact us</h2>
+                <h2 class="custom-primary-color">Contact us</h2>
                 <p class="text-light w-lg-50">We are happy to handle your complaints or any feedback you my have.</p>
             </div>
         </div>
@@ -367,12 +366,14 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-5 col-xl-4">
-                <div>
-                    <form class="p-3 p-xl-4" method="post">
-                        <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Name"></div>
-                        <div class="mb-3"><input class="form-control" type="email" id="email-1" name="email" placeholder="Email"></div>
-                        <div class="mb-3"><textarea class="form-control" id="message-1" name="message" rows="6" placeholder="Message"></textarea></div>
-                        <div><button class="btn btn-primary d-block w-100" type="submit">Submit</button></div>
+                <div class="d-flex justify-content-center align-items-start w-100">
+                    <form class="w-100" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="my-2"><input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name"></div>
+                        <div class="my-2"><input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name"></div>
+                        <div class="my-2"><input class="form-control" type="email" id="email-1" name="email" placeholder="Email"></div>
+                        <div class="my-2"><textarea class="form-control" id="message-1" name="message" rows="6" placeholder="Message"></textarea></div>
+                        <div><button class="btn btn-primary w-100" type="submit">Submit</button></div>
                     </form>
                 </div>
             </div>
