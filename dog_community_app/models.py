@@ -61,11 +61,13 @@ class Team(models.Model):
     member_id = models.IntegerField(primary_key=True)
     full_name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255)
+    
 
 class ContactUs(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     message = models.CharField(max_length = 2000)
+
 
 class Newsletter(models.Model):
     email = models.EmailField(max_length=255)

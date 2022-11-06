@@ -27,19 +27,24 @@ def home_view(request):
         # newsletter_form.save()
     team_members = Team.objects.all()
     return render(request, "index.html",{"team_members":team_members})
+    
 def aboutus_view(request):
     return render(request, "aboutus.html")
+    
 def breedinfo_view(request):
     return render(request, "breedinfo.html")
+    
 def report_missing_dogs_view(request):
     return render(request, "missing_dogs.html")
+    
 def report_stray_dogs_view(request):
     return render(request, "stray_dogs.html")
+    
 def meetup_view(request):
     return render(request, "meetup.html")
+    
 def adoption_view(request):
     return render(request, "adoption.html")
+    
 def contact_view(request):
     return render(request, "contact.html")
-
-
