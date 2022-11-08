@@ -72,5 +72,6 @@ class ContactUs(models.Model):
     message = models.CharField(max_length = 2000)
 
 
+
 class Newsletter(models.Model):
     email = models.EmailField(max_length=255)
