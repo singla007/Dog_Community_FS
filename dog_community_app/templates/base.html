@@ -47,26 +47,37 @@
                 <a href="{% url 'home' %}" class="navbar-brand ms-4 ms-lg-0">
                     <img width="70%" src="{% static "assets/img/logo.png" %}" alt="brand-logo"/>
                 </a>
-                <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <button type="button" class="navbar-toggler me-4" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto p-4 p-lg-0">
-                        <a href="{% url 'home' %}"  class="nav-item nav-link active">Home</a>
-                        
-                        <a href="{% url 'home' %}" class="nav-item nav-link">Breed Info</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Report a dog</a>
-                            <div class="dropdown-menu m-0">
+                    <ul class="navbar-nav ms-auto p-4 p-lg-0">
+                        <li class="nav-item"> 
+                            <a href="{% url 'home' %}"  class="nav-link active">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'home' %}" class="nav-link">Breed Info</a>
+                        </li>
+                        <li class="nav-item dropdown" >
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Report a dog</a>
+                            <div class="dropdown-menu m-0" aria-labelledby="navbarDropdownMenuLink">
                                 <a href="{% url 'report_missing_dogs' %}" class="dropdown-item">Missing dogs</a>
                                 <a href="{% url 'home' %}" class="dropdown-item">Stray dogs</a>
                             </div>
-                        </div>
-                        <a href="{% url 'home' %}" class="nav-item nav-link">Meetup</a>
-                        <a href="{% url 'adoption' %}" class="nav-item nav-link">Adoption</a>
-                        <a href="{% url 'home' %}#contact-us" class="nav-item nav-link">Contact</a>
-                        <a href="{% url 'aboutus' %}" class="nav-item nav-link">About</a>
-                    </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'home' %}" class="nav-link">Meetup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'adoption' %}" class="nav-link">Adoption</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'home' %}#contact-us" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'aboutus' %}" class="nav-link">About</a>
+                        </li>
+                    </ul>
                     <div class="d-none d-lg-flex ms-2">
                         <a class="btn btn-outline-primary py-2 px-3" href="">
                             Adopt Now
@@ -87,7 +98,7 @@
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
-                        <a href="{% url 'home' %}">
+                        <a class="brand_logo_text" href="{% url 'home' %}">
                             <h1 class="fw-bold mb-4 custom-primary-color" >Dog <span class="text-white">Lovers</span></h1>
                         </a>
                         
