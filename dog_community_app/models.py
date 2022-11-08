@@ -7,7 +7,6 @@ class Breed(models.Model):
     breed_image_path = models.CharField(max_length=1024)
 
 
-
 class Dogs(models.Model):
     dog_id = models.AutoField(primary_key=True)
     breed = models.ForeignKey(Breed, on_delete=models.DO_NOTHING)
@@ -15,10 +14,12 @@ class Dogs(models.Model):
     dog_name = models.CharField(max_length=255)
     dog_color = models.CharField(max_length=255)
     dog_age = models.IntegerField()
+    dog_image = models.CharField(max_length=1024, default="")
     is_disable = models.BooleanField()
-    disabilty = models.CharField(max_length=5000)
+    disabilty = models.CharField(max_length=5000, blank=True)
     unique_identification = models.CharField(max_length=5000)
     is_adoption_ready = models.BooleanField()
+    is_featured = models.BooleanField(default=False) # dogs which are loaded without filteration
 
 
 class EventSubscriptions(models.Model):
@@ -51,6 +52,7 @@ class User(models.Model):
     user_contact = models.CharField(max_length=20)
     user_email = models.EmailField(max_length=255)
 
+
 class Admin(models.Model):
     admin_id = models.IntegerField(primary_key=True)
     admin_login_id = models.CharField(max_length=255)
@@ -61,11 +63,14 @@ class Team(models.Model):
     member_id = models.IntegerField(primary_key=True)
     full_name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255)
+    member_image = models.CharField(max_length=1024, default="")
+
 
 class ContactUs(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     message = models.CharField(max_length = 2000)
+
 
 class Newsletter(models.Model):
     email = models.EmailField(max_length=255)

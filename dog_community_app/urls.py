@@ -10,6 +10,10 @@ urlpatterns = [
     path('aboutus', aboutus_view, name="aboutus"),
     path('report_missing_dogs', report_missing_dogs_view, name="report_missing_dogs"),
     path('report_stray_dogs', report_stray_dogs_view, name="report_stray_dogs"),
-    path('adoption', adoption_view, name="adoption")
+    path('adoption', adoption_view, name="adoption"),
+    path('adoption/list', adoption_dog_list, name="adoption_dog_list")
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG: #add this
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

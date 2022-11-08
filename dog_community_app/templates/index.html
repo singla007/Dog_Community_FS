@@ -256,7 +256,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item position-relative rounded overflow-hidden">
                     <div class="overflow-hidden">
-                        <img class="img-fluid" src="{%static "assets/img/team-1.jpg" %}" alt="">
+                        <img class="img-fluid" src="{%static "" %}{{member.member_image}}" alt="">
                     </div>
                     <div class="team-text bg-light text-center p-4">
                         <h5>{{member.full_name}}</h5>
@@ -270,54 +270,6 @@
                 </div>
             </div>
             {% endfor %}
-            <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item position-relative rounded overflow-hidden">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="{%static "assets/img/team-2.jpg"%}" alt="">
-                    </div>
-                    <div class="team-text bg-light text-center p-4">
-                        <h5>Full Name</h5>
-                        <p class="text-primary">Designation</p>
-                        <div class="team-social text-center">
-                            <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="team-item position-relative rounded overflow-hidden">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="{%static "assets/img/team-3.jpg" %}" alt="">
-                    </div>
-                    <div class="team-text bg-light text-center p-4">
-                        <h5>Full Name</h5>
-                        <p class="text-primary">Designation</p>
-                        <div class="team-social text-center">
-                            <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="team-item position-relative rounded overflow-hidden">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="{%static "assets/img/team-4.jpg"%}" alt="">
-                    </div>
-                    <div class="team-text bg-light text-center p-4">
-                        <h5>Full Name</h5>
-                        <p class="text-primary">Designation</p>
-                        <div class="team-social text-center">
-                            <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>
@@ -369,10 +321,11 @@
                 <div class="d-flex justify-content-center align-items-start w-100">
                     <form class="w-100" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="my-2"><input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name"></div>
-                        <div class="my-2"><input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name"></div>
-                        <div class="my-2"><input class="form-control" type="email" id="email-1" name="email" placeholder="Email"></div>
-                        <div class="my-2"><textarea class="form-control" id="message-1" name="message" rows="6" placeholder="Message"></textarea></div>
+                        <input class="form-control my-2" type="text" id="firstname" name="firstname" placeholder="First Name">
+                        <input class="form-control my-2" type="text" id="lastname" name="lastname" placeholder="Last Name"/>
+                        <input class="form-control my-2" type="email" id="email-1" name="email" placeholder="Email"/>
+                        <textarea class="form-control my-2" id="message-1" name="message" rows="6" placeholder="Message"></textarea/>
+                        <input type="hidden" name="action" value="contact"/>
                         <div><button class="btn btn-primary w-100" type="submit">Submit</button></div>
                     </form>
                 </div>
