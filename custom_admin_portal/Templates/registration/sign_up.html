@@ -1,0 +1,17 @@
+<Html>  
+    <head>   
+    <title>  
+    Registration Page  
+    </title>  
+    </head>  
+    <body bgcolor="Lightskyblue">  
+    <br>  
+    <br>  
+    {% load crispy_forms_tags %}
+    <form action="signup" method="post">  
+    {% csrf_token %}{{form|crispy}}
+    
+    <input type="submit" value="Submit"/>  
+    </form>  
+    </body>  
+    </html>  

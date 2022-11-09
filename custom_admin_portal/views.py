@@ -2,8 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 # from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from dog_community_app.models import Admin, User
+from dog_community_app.models import Admin, CustomUser
 from django.contrib import messages
+from .forms import SignUpForm
 
 # Create your views here.
 def login(request):
@@ -45,14 +46,21 @@ def register(request):
         user_contact = request.POST['user_contact']
         user_email = request.POST['user_email']
         # print(User.objects.all().order_by('user_id').last().user_id)
-        user_id = User.objects.all().order_by('user_id').last().user_id +1
-        new_user = User.objects.create(user_id=user_id,field_user_name=username,user_address=user_address,user_contact=user_contact,user_email=user_email)
+        user_id = CustomUser.objects.all().order_by('user_id').last().user_id +1
+        new_user = CustomUser.objects.create(user_id=user_id,field_user_name=username,user_address=user_address,user_contact=user_contact,user_email=user_email)
         new_user.save()
         new_admin = Admin(admin_id=user_id,admin_login_id=login_id,admin_login_pass=password)
         new_admin.save()
-        print(User)
+        print(CustomUser)
         
         return redirect('/')
     else:
         print("hello")
         return render(request, 'register.html')
+
+def signup(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/sign_up.html', {'form':form})

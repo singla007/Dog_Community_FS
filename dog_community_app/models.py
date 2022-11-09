@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 
 class Breed(models.Model):
     breed_id = models.AutoField(primary_key=True)
@@ -24,7 +27,7 @@ class Dogs(models.Model):
 class EventSubscriptions(models.Model):
     subscription_id = models.AutoField(primary_key=True)
     event = models.ForeignKey('Events', on_delete=models.DO_NOTHING)
-    user = models.ForeignKey('User', on_delete=models.DO_NOTHING)
+    user = models.ForeignKey('CustomUser', on_delete=models.DO_NOTHING)
 
 
 class Events(models.Model):
@@ -39,12 +42,12 @@ class Events(models.Model):
 class Reports(models.Model):
     dog = models.ForeignKey(Dogs, on_delete=models.DO_NOTHING)
     breed = models.ForeignKey(Breed, on_delete=models.DO_NOTHING)
-    reporter = models.ForeignKey('User', on_delete=models.DO_NOTHING)
+    reporter = models.ForeignKey('CustomUser', on_delete=models.DO_NOTHING)
     last_known_location = models.CharField(max_length=5000)
     category = models.CharField(max_length=255)
 
 
-class User(models.Model):
+class CustomUser(models.Model):
     user_id = models.IntegerField(primary_key=True)
     field_user_name = models.CharField(max_length=255)
     user_address = models.CharField(max_length=5000)

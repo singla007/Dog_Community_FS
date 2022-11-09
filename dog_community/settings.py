@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dog_community_app',
-    'custom_admin_portal'
+    'custom_admin_portal',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,7 @@ DATABASES = {
         'USER': 'root',
         'HOST':'localhost',
         'PORT':'3306',
-        'PASSWORD':'Keytomysql@2'
+        'PASSWORD':'admin'
     }
 }
 
@@ -130,6 +131,13 @@ USE_TZ = True
 
 STATIC_URL = 'dog_community_app/static/'
 STATICFILES_DIRS = [BASE_DIR/ 'dog_community_app/static']
+
+import os
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "assets")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
