@@ -4,5 +4,14 @@
     </head>
     <body>
         <h1> Login successfull!!!</h1>
+       <a class="btn btn-primary" href="{% url 'logout' %}"">Logout</a>
+        <p>Add breed</p>
+        <form>
+            {% csrf_token %}
+            <input type="text" name="breed_name" placeholder="Enter breed name">
+            <input type="text" name="breed_article" placeholder="Enter Breed Info">
+            <input type="file" name="breed_image" placeholder="upload breed image">
+            <input type="submit" value="Add Breed">
+        </form>
     </body>
 </html>

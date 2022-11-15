@@ -3,9 +3,9 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('login', login, name='login'),
+    path('login', admin_login, name='login'),
     path('dashboard', dashboard, name='dashboard'),
     path('register', register, name='register'),
-    path('', include('django.contrib.auth.urls')),
-    path('signup',signup,name='signup')
+    path('error', error_page, name='error'),
+    path('logout',admin_logout,name='logout')
 ]

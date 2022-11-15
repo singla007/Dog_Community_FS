@@ -1,9 +1,9 @@
-from socket import fromshare
-from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django import forms
 
-class SignUpForm(UserCreationForm):
-    field_user_name = forms.CharField(max_length=255)
-    user_address = forms.CharField(max_length=5000)
-    user_contact = forms.CharField(max_length=20)
-    user_email = forms.EmailField(max_length=255)
+class CreateUserForm(UserCreationForm):
+	class Meta:
+		model = User
+		fields = ['username', 'email', 'password1', 'password2']
