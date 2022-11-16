@@ -14,7 +14,7 @@
                         <div class="d-flex justify-content-center align-content-center">
                             {% csrf_token %}
                             <div class="d-flex align-item-center m-2"><input class="form-control" type="search" id="breed" name="breed" placeholder="Enter the Breed"></div>
-                            <button action="{% url 'adoption' %}" id="search-breed-button" class="btn btn-primary w-30 m-2" type="submit">Search by Breed <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                            <a href="adoption-list"><button action="{% url 'adoption' %}" id="search-breed-button" class="btn btn-primary w-30 m-2" type="submit">Search by Breed<div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2"></a>
                                 <i class="fa fa-arrow-right"></i>
                             </div></button>
                         </div>

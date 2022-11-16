@@ -18,14 +18,16 @@ def home_view(request):
     context = {}
     if(request.POST.get('action') == 'contact'):
         contact_form = ContactUsForm(request.POST or None)
+        print(contact_form)
         if(contact_form.is_valid):
-            # contact_form.save()
-            context['contact_form'] = contact_form
+            contact_form.save()
+        
+        context['contact_form'] = contact_form
             
     if(request.POST.get('action') == 'newsletter'):
         newsletter_form = NewsletterForm(request.POST or None)
         if(newsletter_form.is_valid):
-            # newsletter_form.save()
+            newsletter_form.save()
             context['newsletter_form'] = newsletter_form
             
     team_members = Team.objects.all()
@@ -78,4 +80,5 @@ def adoption_dog_list(request):
         return HttpResponse()
 
 def contact_view(request):
+
     return render(request, "contact.html")
