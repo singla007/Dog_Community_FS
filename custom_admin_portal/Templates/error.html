@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <title>Error | Dog Community App</title>
+    <head>
+    </head>
+<body>
+    <script type="text/javascript">
+        setTimeout(function DelayRedirect() {
+            var seconds = 10;
+            var dvCountDown = document.getElementById("dvCountDown");
+            var lblCount = document.getElementById("lblCount");
+            dvCountDown.style.display = "block";
+            lblCount.innerHTML = seconds;
+            setInterval(function () {
+                seconds--;
+                lblCount.innerHTML = seconds;
+                if (seconds == 0) {
+                    dvCountDown.style.display = "none";
+                    window.location = "/";
+                }
+            }, 1000);
+        },0)
+        </script>
+        <h1>Error 404</h1>
+        <div  id="dvCountDown" style = "display:none;">
+            You have been lost, may be you are either not logged in or have not sufficient permissions for this page kindly contact administrator 
+            <p>, you will be automatically <a href="/">redirected</a> after <span id = "lblCount"></span>&nbsp; to our home page.
+            <p>Sorry for inconvinence.</p>
+        </div>
+    <p>Error Page, You are either not logged in or have not permissions for this page contact administrator , sorry for inconvinence 
+    </p>
+</body>
+    </html>
