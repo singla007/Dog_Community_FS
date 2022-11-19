@@ -4,5 +4,58 @@
     </head>
     <body>
         <h1> Login successfull!!!</h1>
+       <a class="btn btn-primary" href="{% url 'logout' %}"">Logout</a>
+        <p>Add breed</p>
+        <form method="POST" action="{% url 'add_breed' %}">
+            {% csrf_token %}
+            <input type="text" name="breed_name" placeholder="Enter breed name">
+            <input type="text" name="breed_article" placeholder="Enter Breed Info">
+            <input type="file" name="breed_image" placeholder="upload breed image">
+            <input type="submit" value="Add Breed">
+        </form>
+        <p>Add Dog</p>
+        <form method="POST" action="{% url 'add_dog' %}">
+            {% csrf_token %}
+            <!-- <input type="text" name="dog_name" placeholder="Enter dog name">
+            <label for="breed">Choose Breed:</label> -->
+
+            <!-- <select name="breed_id" id="breed">
+                {% for i in breed %}
+                <option value={{i.breed_id}}>{{i.breed_name}}</option>
+                {% endfor %}
+           
+            
+            </select> -->
+           
+            <!-- <input type="text" name="is_adopted" placeholder="Is Adopted">
+            <input type="text" name="dog_color" placeholder="Enter colour name">
+            <input type="text" name="dog_age" placeholder="Enter dog age">
+            <input type="text" name="is_disable" placeholder="Is Disabled">
+            <input type="text" name="disabilty" placeholder="Disabilty">
+            <input type="text" name="unique_identification" placeholder="Enter Unique indentification">
+            <input type="text" name="is_adoption_ready" placeholder="Is adoption ready">
+            <input type="file" name="dog_image_path" placeholder="Upload breed image"> -->
+            {{form}}
+            <input type="submit" value="Add Dog">
+        </form>
+        <p>Add event</p>
+        <form method="POST" action="{% url 'add_event' %}">
+            {% csrf_token %}
+            <input type="text" name="breed_name" placeholder="Enter breed name">
+            <input type="text" name="breed_article" placeholder="Enter Breed Info">
+            <input type="file" name="breed_image" placeholder="upload breed image">
+            <input type="submit" value="Add Breed">
+        </form>
+        <p>Report</p>
+        <form method="POST" action="{% url 'add_report' %}">
+            {% csrf_token %}
+            <input type="text" name="breed_name" placeholder="Enter breed name">
+            <input type="text" name="breed_article" placeholder="Enter Breed Info">
+            <input type="file" name="breed_image" placeholder="upload breed image">
+            <input type="submit" value="Add Breed">
+        </form>
     </body>
+    {% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}	
 </html>
