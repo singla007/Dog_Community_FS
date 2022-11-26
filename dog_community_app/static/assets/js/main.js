@@ -68,6 +68,18 @@
         return false;
     });
 
+    $("#find-breed").click(function( event ) {
+        event.preventDefault();
+        var breed_info_title = $("input[name=breed-info]").val()
+        window.scrollTo({
+            behavior: 'smooth',
+            top:
+              document.getElementById(breed_info_title).getBoundingClientRect().top -
+              document.body.getBoundingClientRect().top -
+              90,
+          })   
+    })
+
     function filterDogs(that, breed){
         var token = $("input[name=csrfmiddlewaretoken]").val()
         // Stop form from submitting normally
@@ -113,6 +125,7 @@
         var token = $("input[name=csrfmiddlewaretoken]").val()
         var url = $(this).attr( "action" ) + "/list"
         var breed = $("input[name=breed]").val()
+        
         $.ajax({
             url: url,
             data: {
@@ -130,6 +143,13 @@
 
             }
         })
+        window.scrollTo({
+            behavior: 'smooth',
+            top:
+              document.getElementById("adoption-list").getBoundingClientRect().top -
+              document.body.getBoundingClientRect().top -
+              90,
+          }) 
         
     });
 })(jQuery);

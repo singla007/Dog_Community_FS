@@ -3,9 +3,12 @@ from django.db import models
 class Breed(models.Model):
     breed_id = models.AutoField(primary_key=True)
     breed_name = models.CharField(max_length=255)
-    breed_article = models.CharField(max_length=10000)
+    bred_for = models.CharField(max_length=1000, default="")
+    life_span = models.CharField(max_length=1000, default="")
+    temperament = models.CharField(max_length=1000, default="")
+    origin = models.CharField(max_length=1000, default="")
     breed_image_path = models.CharField(max_length=1024)
-
+    breed_article = models.CharField(max_length=1024, default="")
 
 class Dogs(models.Model):
     dog_id = models.AutoField(primary_key=True)

@@ -10,6 +10,11 @@
     color: rgb(255,111,15) !important;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 img{
     object-fit: cover;
 }
@@ -52,6 +57,7 @@ img{
 .btn-primary {
     --bs-bg-opacity: 1;
     background-color: rgb(255,111,15)!important;
+    border-width: 2px;
     border-color: #F5DBBB !important;
     outline: none;
     color: white;
@@ -116,6 +122,8 @@ img{
 .btn {
     font-weight: 500;
     transition: .5s;
+    align-items: center;
+    justify-content: center;
 }
 
 /* .btn.btn-primary,
@@ -290,7 +298,7 @@ img{
 /*** Causes ***/
 #causes .img-fluid {
     width: 500px;
-    height: 360px;
+    height: 380px;
 }
 
 .causes-item .causes-overlay {
@@ -493,6 +501,10 @@ img{
 
 /*** Footer ***/
 
+.footer a {
+    text-decoration: none;
+}
+
 .footer .brand_logo_text {
     color: transparent;
 }
@@ -546,6 +558,10 @@ img{
     height:320px;
     width:100%;
   }
+
+#adoption  a {
+    color: white;
+}
 
 #adoption 
   div [class^="col-"]{
@@ -630,3 +646,113 @@ img{
   .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
     transform: scale3d(1, 1, 1);
   }
+
+/* breed info page */
+
+#breed-info 
+img{
+    height:320px;
+    width:100%;
+  }
+
+#breed-info  a {
+    color: white;
+}
+
+#breed-info 
+  div [class^="col-"]{
+    padding-left:15px;
+    padding-right:15px;
+  }
+
+  #breed-info 
+  .card{
+    transition:0.5s;
+    cursor:pointer;
+  }
+
+  #breed-info 
+  .card img{
+    overflow: hidden;
+  }
+#breed-info
+  .card .card-img-overlay {
+    display: none;
+  }
+  #breed-info
+  .card:hover .card-img-overlay {
+    color: white;
+    display: block;
+  }
+#breed-info .card
+  .card-title{  
+    position: relative;
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    padding:0 10px;
+    z-index: 2;
+  }
+  #breed-info .card
+  .card-title i{  
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    color:#ffa710
+  }
+  #breed-info .card
+  .card-title i:hover{
+    transform: scale(1.25) rotate(100deg); 
+    color:#18d4ca;
+    
+  }
+  #breed-info
+  .card:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  }
+  #breed-info .card
+  .card-text{ 
+    position: relative;
+    padding: 0 10px;
+    z-index: 2;
+  }
+
+  #breed-info .breed-article{ 
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #breed-info
+  .card::before, .card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    background: rgba(0,0,0, 0.3);
+    content: '';
+    pointer-events: none;
+  }
+  #breed-info 
+  .card::before {
+    transform-origin: left top;
+  }
+  #breed-info
+  .card::after {
+    transform-origin: right bottom;
+  }
+  #breed-info
+  .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+    transform: scale3d(1, 1, 1);
+  }
+
+
+/* report dog */
+#report-dogs {
+    margin-top: 170px;
+}

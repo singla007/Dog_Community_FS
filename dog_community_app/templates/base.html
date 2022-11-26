@@ -53,29 +53,29 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ms-auto p-4 p-lg-0">
                         <li class="nav-item"> 
-                            <a href="{% url 'home' %}"  class="nav-link active">Home <span class="sr-only">(current)</span></a>
+                            <a href="{% url 'home' %}"  class="nav-link {% if '/home' in request.path %}active{% endif %}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'home' %}" class="nav-link">Breed Info</a>
+                            <a href="{% url 'breed-info' %}" class="nav-link {% if '/breed-info' in request.path %}active{% endif %}">Breed Info</a>
                         </li>
                         <li class="nav-item dropdown" >
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Report a dog</a>
+                            <a href="#" class="nav-link {% if '/report_dogs' in request.path %}active{% endif %} dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Report a dog</a>
                             <div class="dropdown-menu m-0" aria-labelledby="navbarDropdownMenuLink">
-                                <a href="{% url 'report_missing_dogs' %}" class="dropdown-item">Missing dogs</a>
-                                <a href="{% url 'home' %}" class="dropdown-item">Stray dogs</a>
+                                <a href="/report_dogs/missing" class="dropdown-item">Missing dogs</a>
+                                <a href="/report_dogs/stray" class="dropdown-item">Stray dogs</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'home' %}" class="nav-link">Meetup</a>
+                            <a href="{% url 'home' %}" class="nav-link {% if request.path == home %}active{% endif %}">Meetup</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'adoption' %}" class="nav-link">Adoption</a>
+                            <a href="{% url 'adoption' %}" class="nav-link {% if '/adoption' in request.path %}active{% endif %}">Adoption</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'home' %}#contact-us" class="nav-link">Contact</a>
+                            <a href="{% url 'home' %}#contact-us" class="nav-link {% if '/home#contact-us' in request.path %}active{% endif %}">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'aboutus' %}" class="nav-link">About</a>
+                            <a href="{% url 'aboutus' %}" class="nav-link {% if '/aboutus' in request.path %}active{% endif %}">About</a>
                         </li>
                     </ul>
                     <div class="d-none d-lg-flex ms-2">
@@ -121,8 +121,8 @@
                         <a class="btn btn-link" href="{% url 'aboutus' %}">About Us</a>
                         <a class="btn btn-link" href="{% url 'home' %}#contactus">Contact Us</a>
                         <a class="btn btn-link" href="{% url 'home' %}">Breed Info</a>
-                        <a class="btn btn-link" href="{% url 'report_missing_dogs' %}">Missing dogs</a>
-                        <a class="btn btn-link" href="{% url 'home' %}">Stray dogs</a>
+                        <a class="btn btn-link" href="/report_dogs/missing">Missing dogs</a>
+                        <a class="btn btn-link" href="/report_dogs/stray">Stray dogs</a>
                         <a class="btn btn-link" href="{% url 'home' %}">Meetup</a>
                         <a class="btn btn-link" href="{% url 'adoption' %}">Adoption</a>
                         

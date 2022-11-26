@@ -39,13 +39,18 @@ def aboutus_view(request):
     return render(request, "aboutus.html")
 
 def breedinfo_view(request):
-    return render(request, "breedinfo.html")
+    context = {}
+    if request.method == 'GET':
+        context['all_breeds'] = Breed.objects.all()
+        context['filtered_breeds'] = Breed.objects.all()
+    return render(request, "breed-info.html", context)
 
-def report_missing_dogs_view(request):
-    return render(request, "missing_dogs.html")
-
-def report_stray_dogs_view(request):
-    return render(request, "stray_dogs.html")
+def report_dogs_view(request, type):
+    context = {}
+    print(type)
+    if request.method == 'GET':
+        context['all_breeds'] = Breed.objects.all()
+    return render(request, "report_dogs.html", context)
 
 def meetup_view(request):
     return render(request, "meetup.html")
