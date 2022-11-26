@@ -2,15 +2,22 @@
 
 {% block content %}
 {% load static %}
-<div class="container position-relative page-top" data-aos="zoom-out-up">
+<div class="container position-relative" id="report-dogs" >
     <div class="row d-flex justify-content-center">
         <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-6">
-            <div class="card mb-5">
-                <div class="card-body p-sm-5">
+            <div class="mb-5">
+                <div class="p-sm-5">
                     <h2 class="text-center mb-4" style="padding-bottom: 0px;">Missing dog information</h2>
                     <form method="post" enctype="multipart/form-data">     
-                        {% csrf_token %}                   
-                        <div class="mb-3"><input class="form-control" type="text" id="breed" name="breed" placeholder="Breed"></div>
+                        {% csrf_token %} 
+                        <select class="form-select mb-3" autoComplete="on" aria-label="Default select example" id="breed-report" name="breed" placeholder="Breed Name">
+                            <option selected value="-1">Select the breed</option>
+                            {% for breed in all_breeds %}
+                            <option value="{{breed.breed_id}}">{{breed.breed_name}}</option>
+                            {% endfor %}
+                            <option value=-2 >Other</option>
+                        </select>
+                        <input type="hidden" name="action" value="filter_by_breed"/>
                         <div class="mb-3"><input class="form-control" type="text" id="email" name="email" placeholder="Last seen" style="margin-top: 7px;padding-bottom: 9px;margin-bottom: 16px;"></div>
                         <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Description"></textarea></div>
                         <div class="mb-3"><input class="form-control" type="tel" name="name" placeholder="Contact info."></div>

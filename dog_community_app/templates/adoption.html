@@ -13,10 +13,19 @@
                         <p class="fs-5 text-white-50 mb-5 animated slideInDown">Search your adoptable dog from our NGO or from rescue</p>
                         <div class="d-flex justify-content-center align-content-center">
                             {% csrf_token %}
-                            <div class="d-flex align-item-center m-2"><input class="form-control" type="search" id="breed" name="breed" placeholder="Enter the Breed"></div>
-                            <a href="adoption-list"><button action="{% url 'adoption' %}" id="search-breed-button" class="btn btn-primary w-30 m-2" type="submit">Search by Breed<div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2"></a>
-                                <i class="fa fa-arrow-right"></i>
-                            </div></button>
+                            <datalist id="breeds_list" >
+                                {% for breed in all_breeds %}
+                                    <option value="{{breed.breed_name}}"/>
+                                {% endfor %}
+                            </datalist>
+                            <div class="d-flex align-item-center mx-2"><input list="breeds_list" class="form-control text-center" style="width: 160px;" type="text" id="breed" name="breed" placeholder="Enter the Breed"/></div>
+                            <a href="adoption-list" class="btn btn-primary py-2 px-3 animated slideInDown" action="{% url 'adoption' %}" id="search-breed-button">
+                                Adopt
+                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -24,20 +33,20 @@
         </div>
     </section>
     <div class="container-fluid bg-light py-2 py-xl-3">
-        <section id="adoption-top" class="container py-5">
+        <section id="adoption-top" class="container py-2">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Adoptable Dogs</div>
                 <h1 class="display-6 mb-5">Give the dog a live it deserves</h1>
             </div>
             <p class="mb-5 sub-heading">Check how adoption works by <a class="text-light-no-hover" href="#adoption-notes">clicking here</a>!</p>
-                {% csrf_token %}
-                <select class="form-select" aria-label="Default select example" name="breed_id" id="filter-by-breed" action="{% url 'adoption' %}">
-                    <option selected value="-1">Select the breed</option>
-                    {% for breed in all_breeds %}
-                    <option value="{{breed.breed_id}}">{{breed.breed_name}}</option>
-                    {% endfor %}
-                </select>
-                <input type="hidden" name="action" value="filter_by_breed"/>
+            {% csrf_token %}
+            <select class="form-select" autoComplete="on" aria-label="Default select example" name="breed_id" id="filter-by-breed" action="{% url 'adoption' %}">
+                <option selected value="-1">Select the breed</option>
+                {% for breed in all_breeds %}
+                <option value="{{breed.breed_id}}">{{breed.breed_name}}</option>
+                {% endfor %}
+            </select>
+            <input type="hidden" name="action" value="filter_by_breed"/>
             
         </section>
         <section id="adoption-list" class="container">
@@ -57,58 +66,6 @@
                 </div>
                 {% endfor %}
             </div>
-            {% comment %} <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3" >
-                <div class="col" style="background: #11bf6f;">
-                    <div><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 200px;" src="clipboard-image-6.png" />
-                        <div class="py-4">
-                            <h2 style="color: var(--bs-warning);">Dominic</h2>
-                            <p style="color: var(--bs-warning);font-size: 23px;">Contrary to popular opinion, a small size does not automatically make a dog suitable for an apartment. Many tiny dogs are too excitable and yappy to live in a high building.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 200px;" src="clipboard-image-7.png" />
-                        <div class="py-4" style="background: #11bf6f;">
-                            <h2 style="color: var(--bs-warning);">Spike </h2>
-                            <p style="color: var(--bs-warning);font-size: 23px;">Breed is not the only thing that affects a dog&#39;s level of attachment; dogs that were raised in a home with people present are more receptive to people and bond more readily. Affectionate Dogs with Family</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col" style="background: #11bf6f;">
-                    <div><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 200px;" src="clipboard-image-8.png" width="416" height="200" />
-                        <div class="py-4">
-                            <h2 style="color: var(--bs-warning);">Luna</h2>
-                            <p style="color: var(--bs-warning);font-size: 23px;">If you decide to live with a dog, you will have to put up with some dog hair on your furnishings and in your home. The amount of shedding varies considerably between breeds, though.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col" style="background: #11bf6f;">
-                    <div><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 200px;" src="clipboard-image-9.png" />
-                        <div class="py-4">
-                            <h2 style="color: var(--bs-warning);">Drake </h2>
-                            <p style="color: var(--bs-warning);font-size: 23px;">Refer to **Dogs Which Aren&#39;t Kid Friendly Dogs are all unique beings. Our ratings are generalisations, not promises of how any particular breed or dog will act.<br /></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 200px;padding-top: 0px;margin-top: 0px;" src="clipboard-image-3.png" width="420" height="200" />
-                        <div class="py-4" style="background: #11bf6f;">
-                            <h2 style="color: var(--bs-yellow);">Libero</h2>
-                            <p style="color: var(--bs-warning);font-size: 23px;">Not all factors are related to breed. Dogs that spend a lot of time socializing with other dogs as puppies and who were raised with their offsprings and mother until they were at least six to eight weeks old are more likely to have high canine social skills.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col" style="background: #11bf6f;">
-                    <div></div>
-                    <div><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 200px;" src="clipboard-image-11.png" />
-                        <div class="py-4">
-                            <h2 style="color: var(--bs-warning);">Donec</h2>
-                            <p style="font-size: 23px;color: var(--bs-warning);">Others need routine bathing, trimming, and other care merely to be clean and healthy. Some breeds can be brushed and left alone.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> {% endcomment %}
     </section>
     <section id="adoption-notes" class="container py-5">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
