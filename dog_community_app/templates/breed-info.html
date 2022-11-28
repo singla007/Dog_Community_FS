@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div id="breed-info">
+    <section id="hero" class="d-flex align-items-center position-relative">
+        <img class="w-100 h-100"  src="{%static "assets/img/unsplash_hero_aboutus.png" %}" alt="Image">
+        <div class="carousel-caption">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <h1 class="display-4 text-white mb-3 animated slideInDown">Breed Information</h1>
+                        <div class="d-flex justify-content-center align-content-center">
+                            {% csrf_token %}
+                            <datalist id="breeds_list" >
+                                {% for breed in all_breeds %}
+                                    <option value="{{breed.breed_name}}"/>
+                                {% endfor %}
+                            </datalist>
+                            <div class="d-flex align-item-center mx-2"><input list="breeds_list" class="form-control text-center" style="width: 160px;" type="text" id="breed_breed_info" name="breed-info" placeholder="Enter the Breed"/></div>
+                            <button id="find-breed" class="btn btn-primary py-2 px-3 animated slideInDown">
+                                Find
+                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-fluid bg-light py-2 py-xl-3">
+        <section id="breedinfo-top" class="container py-2">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">List of breeds</div>
+                <h1 class="display-6 mb-5">Know more about dog breeds</h1>
+            </div>
+            {% csrf_token %}
+        </section>
+        <section id="breed-info-list" class="container w-75">
+            
+            {% for breed in filtered_breeds %}
+                <div class="row py-3" id="{{breed.breed_name}}">
+                {% comment %} <p id="featured-dogs-text" class="mb-5 sub-heading text-center">{{breed.breed_name}}</p> {% endcomment %}
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="card card-block">
+                            <img class="card-img-top" src="{{breed.breed_image_path}}" alt="{{breed.breed_name}}">
+                            {% comment %} <div class="card-img-overlay">
+                                <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
+                                
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 d-flex flex-column justify-content-center">
+                        <h5 class="card-title text-center mt-3 mb-3">{{breed.breed_name}}</h5>
+                        <p class="card-text text-center">Bred for: {{breed.bred_for}}</p>
+                        <p class="card-text text-center">Life Span: {{breed.life_span}}</p>
+                        <p class="card-text text-center">Orginated from: {{breed.origin}}</p>
+                        <p class="card-text text-center">Temperament: {{breed.temperament}}</p>
+                    </div>
+                    <div class="col-lg-5 col-sm-12 py-sm-3 py-lg-0 d-flex align-items-center">
+                        <p class="card-text text-center breed-article">{{breed.breed_article}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            
+    </section>
+</div>
+{% endblock %}

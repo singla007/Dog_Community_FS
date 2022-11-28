@@ -68,7 +68,24 @@
         return false;
     });
 
-    function filterDogs(that, breed){
+    $("#find-breed").click(function( event ) {
+        event.preventDefault();
+        var breed_info_title = $("input[name=breed-info]").val()
+        window.scrollTo({
+            behavior: 'smooth',
+            top:
+              document.getElementById(breed_info_title).getBoundingClientRect().top -
+              document.body.getBoundingClientRect().top -
+              90,
+          })   
+    })
+    $.fn.adoptButton = function() {
+        var dog_q = $(this).attr("data-dog-id")
+        console.log(dog_q)
+        filterDogsByDog($(this), dog_q)
+    }
+    
+    function filterDogsByBreed(that, breed){
         var token = $("input[name=csrfmiddlewaretoken]").val()
         // Stop form from submitting normally
         // Get some values from elements on the page:
@@ -90,6 +107,7 @@
             method:'POST',
             success: function( data ) {
                 var adoption_list_element = $('<div />').append(data).find("#adoption-list").html()
+                console.log(adoption_list_element)
                 $('#adoption-list').html(adoption_list_element);
                 if(breed_id>0){
                     $('#featured-dogs-text').html('');
@@ -101,11 +119,53 @@
         })
     }
 
+    function filterDogsByDog(that, dogId){
+        var token = $("input[name=csrfmiddlewaretoken]").val()
+        $("#adopt-form").modal('show')
+
+        // Send the data using post
+        $.ajax({
+            url: $(that).attr("data-url")+ "/list",
+            data: {
+                action: "get_dog_data",
+                dog_id: dogId,
+                CSRF: token
+            },
+            headers: {
+                "X-CSRFToken" : token
+            },
+            method:'POST',
+            success: function( data ) {
+                $("#id_dog_name").val(data.dogName)
+            }
+        })
+        // $("#adopt-form").submit((function (e) {
+        //     console.log(e.target.value)
+        //     e.preventDefault()
+        //     $.ajax({
+        //         method: "POST",
+        //         data: $(this).serialize(),
+        //         dataType: "json",
+        //         url: $(that).attr("data-url"),
+        //         headers: {
+        //             "X-CSRFToken" : token
+        //         },
+        //         success: function (response) {
+        //             $("#adopt-form").modal('hide');
+        //         },
+        //         error: function (response) {
+
+        //         }});      
+            
+        // }))
+    }
+    
+
 
     $( "#filter-by-breed").on('change',function( event ) {
         event.preventDefault();
         var breed_id = $(this).val()
-        filterDogs($(this), breed_id)
+        filterDogsByBreed($(this), breed_id)
     });
 
     $( "#search-breed-button").click(function( event ) {
@@ -113,6 +173,7 @@
         var token = $("input[name=csrfmiddlewaretoken]").val()
         var url = $(this).attr( "action" ) + "/list"
         var breed = $("input[name=breed]").val()
+        
         $.ajax({
             url: url,
             data: {
@@ -130,7 +191,28 @@
 
             }
         })
+        window.scrollTo({
+            behavior: 'smooth',
+            top:
+                document.getElementById("adoption-list").getBoundingClientRect().top -
+                document.body.getBoundingClientRect().top -
+                90,
+        }) 
         
+    });
+
+    // report a missing dog
+    $( "#breed-report").on('change',function( event ) {
+        event.preventDefault();
+        if(event.target.value == -2){
+            document.getElementById("breed_other").type = "text"
+        }
+        else {
+            document.getElementById("breed_other").type = "hidden"
+        }
+
+        // var breed_id = $(this).val()
+        // filterDogs($(this), breed_id)
     });
 })(jQuery);
 
