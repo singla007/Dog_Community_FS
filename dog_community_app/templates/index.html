@@ -325,10 +325,10 @@
                 <div class="d-flex justify-content-center align-items-start w-100">
                     <form class="w-100" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input class="form-control my-2" type="text" id="name" name="name" placeholder="Name">
-                        <input class="form-control my-2" type="email" id="email" name="email" placeholder="Email"/>
-                        <textarea class="form-control my-2" id="message-1" name="message" rows="6" placeholder="Message"></textarea/>
-                        <input type="hidden" name="action" value="contact"/>
+                        {% for field in contact_form %}
+                                {{ field }}
+                        {% endfor %}
+                        <input type="hidden" name="action-contact" value="contact"/>
                         <div><button class="btn btn-primary w-100" type="submit">Submit</button></div>
                     </form>
                 </div>

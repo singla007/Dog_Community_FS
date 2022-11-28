@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dog_community_app',
-    'custom_admin_portal'
+    'custom_admin_portal',
 ]
 
 MIDDLEWARE = [

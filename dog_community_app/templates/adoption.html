@@ -20,7 +20,7 @@
                             </datalist>
                             <div class="d-flex align-item-center mx-2"><input list="breeds_list" class="form-control text-center" style="width: 160px;" type="text" id="breed" name="breed" placeholder="Enter the Breed"/></div>
                             <a href="adoption-list" class="btn btn-primary py-2 px-3 animated slideInDown" action="{% url 'adoption' %}" id="search-breed-button">
-                                Adopt
+                                Find
                                 <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>
                                 </div>
@@ -61,10 +61,55 @@
                             <h5 class="card-title text-center mt-3 mb-3">{{dog.dog_name}}</h5>
                             <p class="card-text text-center">Age: {{dog.dog_age}}</p>
                             <p class="card-text text-center">Color: {{dog.dog_color}}</p>
+                            <div class="d-flex justify-content-center mt-5">
+                                <button onclick="$(this).adoptButton();" data-dog-id={{dog.dog_id}} data-url={%url 'adoption'%} id="adopt-button" class="btn btn-primary py-2 px-3 animated slideInDown">
+                                    Adopt
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </button>
+                            </div>
                         </div>
+                        
                     </div>
                 </div>
                 {% endfor %}
+                <div class="modal fade" id="adopt-form" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form class="adopt-form" method="post" action="{% url 'adoption'%}">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" >Adoption Details</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {% comment %} <datalist id="dog_list" >
+                                        {% for dog in adoption_dog_list %}
+                                            <option value="{{dog.dog_name}}"/>
+                                        {% endfor %}
+                                    </datalist> {% endcomment %}
+                                    {% for field in adoption_dog_form%}
+                                        {{field}}
+                                    {% endfor%}
+                                    {% for field in adoption_user_form%}
+                                        {{field}}
+                                    {% endfor%}
+                                    <input type="hidden" name="action-adopt" value="action-adopt"/>
+                                    {% comment %} <div class="mb-3"><input list="dog_list" class="form-control text-center" style="width: 160px;" type="text" id="dog_name" name="dog_name" placeholder="Enter dog name"/></div>
+                                    <div class="mb-3"><input class="form-control" type="text" id="name" name="name" placeholder="Your Name" style="margin-top: 7px;padding-bottom: 9px;margin-bottom: 16px;"></div>
+                                    <div class="mb-3"><input class="form-control" type="tel" name="email" placeholder="Email Address"></div>
+                                    <div class="mb-3"><input class="form-control" type="tel" name="phn" placeholder="Contact Number"></div>
+                                    <div class="mb-3"><input class="form-control" type="file"></div> {% endcomment %}
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button class="btn btn-primary d-block w-50" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
     </section>
     <section id="adoption-notes" class="container py-5">

@@ -49,12 +49,15 @@ class Reports(models.Model):
 
 
 class User(models.Model):
-    user_id = models.IntegerField(primary_key=True)
-    field_user_name = models.CharField(max_length=255)
-    user_address = models.CharField(max_length=5000)
+    user_id = models.AutoField(primary_key=True)
+    user_name = models.CharField(max_length=255)
+    user_address = models.CharField(max_length=5000, blank=True)
     user_contact = models.CharField(max_length=20)
     user_email = models.EmailField(max_length=255)
 
+class Adoption(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    dog = models.ForeignKey(Dogs, on_delete=models.DO_NOTHING)
 
 class Admin(models.Model):
     admin_id = models.IntegerField(primary_key=True)
@@ -73,6 +76,9 @@ class ContactUs(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     message = models.CharField(max_length = 2000)
+
+    def __str__(self):
+        return self.name
 
 
 

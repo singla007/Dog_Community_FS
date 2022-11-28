@@ -16,6 +16,9 @@ a {
 }
 
 img{
+    object-fit: contain;
+}
+.card img {
     object-fit: cover;
 }
 
@@ -344,6 +347,7 @@ img{
 #contact-us img {
     height: 800px;
     max-height: 80%;
+    object-fit: cover;
 }
 #contact-us form {
     margin-block-end: 0.5rem;
@@ -559,6 +563,11 @@ img{
     width:100%;
   }
 
+#adopt-button {
+    position: relative;
+    z-index: 2;
+}
+
 #adoption  a {
     color: white;
 }
@@ -651,7 +660,7 @@ img{
 
 #breed-info 
 img{
-    height:320px;
+    height:300px;
     width:100%;
   }
 
@@ -754,5 +763,82 @@ img{
 
 /* report dog */
 #report-dogs {
-    margin-top: 170px;
+    background-image: url("../img/SL-100420-36140-29.jpg");
+    /* background-color: #2FB9CB;
+    background-blend-mode: multiply; */
+    background-color: var(--secondary);
+    background-blend-mode: overlay;
+    height: fit-content;
+    width: 100vw;
+    background-attachment: fixed;
+    background-position: 4% 10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
+.report-dogs {
+    margin-top: 200px;
+}
+
+#report-dogs .report-tag {
+    background-color: var(--primary);
+    color: white;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;;
+    margin-top: -10%;
+    /* margin-left: -60px; */
+}
+
+.report-card {
+    position: relative;
+    background-color: var(--secondary);
+    border-radius: 2.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 460px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px;
+}
+.report-card form {
+    width: 90%;
+    transform: translateY(-6px);
+}
+
+.missing-dog-image {
+    position: absolute;
+    width: 240px;
+    height: 100%;
+    right: -25%;
+    top: 20%;
+    z-index: 2;
+}
+
+@media (max-width: 991.98px) {
+    .missing-dog-image {
+        position: absolute;
+        width: 220px;
+        height: 100%;
+        right:-42%;
+        top: 18%;
+    }
+}
+
+.stray-dog-image {
+    position: absolute;
+    max-width: 400px;
+    width: 100%;
+    right: -45%;
+    bottom: -5%;
+    z-index: 2;
+}
+
+@media (max-width: 991.98px) {
+    .stray-dog-image {
+        right:-42%;
+    }
+}
+
