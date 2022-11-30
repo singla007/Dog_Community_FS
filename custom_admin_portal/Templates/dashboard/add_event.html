@@ -201,7 +201,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-body">
-                                <form  name="add_event_form"class="form-horizontal form-material mx-2" onsubmit="return validateForm()" method="POST" action="{% url 'add_event' %}">
+                                <form enctype="multipart/form-data" name="add_event_form"class="form-horizontal form-material mx-2" onsubmit="return validateForm()" method="POST" action="{% url 'add_event' %}">
                                     {% csrf_token %}
                                     <h2 class="mb-3" >Add Event for Meetup</h2>
 

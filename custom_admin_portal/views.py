@@ -165,8 +165,8 @@ def add_event(request):
     event_duration = request.POST.get('event_duration')
     event_capacity = request.POST.get('event_capacity')
     event_description = request.POST.get('event_description')
-    
-    event = Events.objects.create(event_location=event_location, event_duration=event_duration, event_time=event_time,event_capacity=event_capacity,event_description=event_description)
+    event_image = request.FILES.get('event_image')
+    event = Events.objects.create(event_location=event_location, event_duration=event_duration, event_time=event_time,event_capacity=event_capacity,event_description=event_description,event_image=event_image)
 
     if event is not None:
         messages.success(request, 'Sucess: Event Added')
