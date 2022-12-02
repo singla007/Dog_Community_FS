@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}  
+<head>
+	<title>Admin Login | Dog Community</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+	<link rel="icon" type="image/png" href="{% static 'admin/images/icons/favicon.ico' %}"/>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/vendor/bootstrap/css/bootstrap.min.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/vendor/animate/animate.css' %}">
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/vendor/css-hamburgers/hamburgers.min.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/vendor/select2/select2.min.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/main.css' %}">
+
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					
+					<img src="{% static 'admin/images/img-01.png' %}" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form" style="margin-left: 30px;" method="POST" action="">
+					{% csrf_token %}
+					<span class="login100-form-title">
+						Register Admin for Dog Community
+					</span>
+					<div class="wrap-input100 validate-input" data-validate = "Valid First Name is required">
+						<input class="input100" type="text" autofocus required name={{form.first_name.name}} placeholder="First Name" id={{form.first_name.id}}>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid Last Name is required">
+						<input class="input100" type="text" required name={{form.last_name.name}} placeholder="Last Name" id={{form.last_name.id}}>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid username is required">
+						<input class="input100" type="text" required name={{form.username.name}} placeholder="Username" id={{form.username.id}}>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Email is required: ex@abc.xyz">
+						<input class="input100" required type="text" onChange="onEmailChange(event)" name={{form.email.name}} placeholder="Enter Email"  id={{form.email.id}} >
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Atleast one lower, upper case, symbol charcater, one digit and length at least 8 required">
+						<input class="input100"  required type="password" name={{form.password1.name}} placeholder="Enter Password" id={{form.password1.id}}>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password should be matching and following password guidelines">
+						<input class="input100" required type="password" name={{form.password2.name}} placeholder="Retype password" id={{form.password2.id}}>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					{{form.errors}}
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Register
+						</button>
+					</div>
+
+					<div class="text-center p-t-12">
+						<a class="txt2" href="{% url 'login' %}">
+							Already Registered, Login here
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+						
+					</div>
+
+					{% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}	
+					<div class="text-center p-t-20">
+						<span class="txt1">
+							Privacy
+						</span>
+						<a class="txt2" href="#">
+							Policy
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+	
+	<script src="{% static 'admin/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+	<script src="{% static 'admin/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'admin/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+	<script src="{% static 'admin/vendor/select2/select2.min.js' %}"></script>
+
+	<script src="{% static 'admin/vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+	<script src="{% static 'admin/js/main.js' %}"></script>
+
+</body>
+</html>

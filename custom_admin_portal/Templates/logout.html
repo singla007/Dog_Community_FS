@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <title >
+        Log Out | Dog community App
+    </title>
+    <script type="text/javascript">
+        setTimeout(function DelayRedirect() {
+            var seconds = 5;
+            var dvCountDown = document.getElementById("dvCountDown");
+            var lblCount = document.getElementById("lblCount");
+            dvCountDown.style.display = "block";
+            lblCount.innerHTML = seconds;
+            setInterval(function () {
+                seconds--;
+                lblCount.innerHTML = seconds;
+                if (seconds == 0) {
+                    dvCountDown.style.display = "none";
+                    window.location = "/";
+                }
+            }, 1000);
+        },0)
+        </script>
+    <body>
+    
+        
+        <div  id="dvCountDown" style = "display:none;">
+            You have been logged out , you will be automatically <a href="/customadmin/">redirected</a> after <span id = "lblCount"></span>&nbsp; to our home page.
+            <p>Thanks for visting.</p>
+        </div>
+    </body>
+</html>

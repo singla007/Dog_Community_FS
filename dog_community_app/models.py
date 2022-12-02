@@ -7,7 +7,7 @@ class Breed(models.Model):
     life_span = models.CharField(max_length=1000, default="")
     temperament = models.CharField(max_length=1000, default="")
     origin = models.CharField(max_length=1000, default="")
-    breed_image_path = models.CharField(max_length=1024)
+    breed_image_path = models.ImageField(upload_to='images/breeds')
     breed_article = models.CharField(max_length=1024, default="")
 
 class Dogs(models.Model):
@@ -17,7 +17,7 @@ class Dogs(models.Model):
     dog_name = models.CharField(max_length=255)
     dog_color = models.CharField(max_length=255)
     dog_age = models.IntegerField()
-    dog_image = models.ImageField(upload_to='assets/img/', blank=True) # uploading the dog image in assets/img folder
+    dog_image = models.ImageField(upload_to='images/dogs')
     is_disable = models.BooleanField()
     disabilty = models.CharField(max_length=5000, blank=True)
     unique_identification = models.CharField(max_length=5000)
@@ -38,6 +38,7 @@ class Events(models.Model):
     event_duration = models.IntegerField()
     event_capacity = models.IntegerField()
     event_description = models.CharField(max_length=5000)
+    event_image = models.ImageField(upload_to='images/events',default='images/default_event.jpg')
 
 
 class Reports(models.Model):
