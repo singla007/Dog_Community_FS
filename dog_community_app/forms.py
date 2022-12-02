@@ -58,14 +58,45 @@ class AdoptionDogDetailsForm(forms.ModelForm):
                 'class': 'form-control my-2'
             }),
         }
-# class MissingDogDetails(forms.ModelForm):
-#     class Meta:
-#         model = Dogs
-#         fields = [
-#             'dog_name',
-#             ''
-#         ]
-class MissingDogForm(forms.ModelForm):
+class MissingDogDetails(forms.ModelForm):
+    class Meta:
+        model = Dogs
+        fields = [
+            'dog_name',
+            'dog_age',
+            'dog_color',
+            'dog_image',
+            'unique_identification',
+            'is_disable',
+            'disability'            
+        ]
+        widgets = {
+            'dog_name': forms.TextInput(attrs={
+                'placeholder': "Dog's Name",
+                'class': 'form-control my-2'
+            }),
+            'dog_age': forms.TextInput(attrs={
+                'placeholder': "Dog's Age",
+                'class': 'form-control my-2'
+            }),
+            'dog_color': forms.TextInput(attrs={
+                'placeholder': "Dog's color",
+                'class': 'form-control my-2'
+            }),
+            'unique_identification': forms.Textarea(attrs={
+                'cols': 50, 'rows': 3,
+                'placeholder': "Dog's identification (unique)",
+                'class': 'form-control my-2'
+            }),
+            'is_disable': forms.RadioSelect(),
+            'disability': forms.TextInput(attrs={
+                'placeholder': "Dog's identification (unique)",
+                'class': 'form-control my-2'
+            })
+            
+        }
+        
+class MissingDogReporter(forms.ModelForm):
     # model forms
     class Meta:
         model = Reports

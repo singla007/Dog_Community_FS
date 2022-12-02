@@ -73,6 +73,7 @@ TEMPLATES = [
 
 MEDIA_URL = 'assets/img/'
 MEDIA_ROOT =BASE_DIR / 'dog_community_app/static/'
+SESSION_SAVE_EVERY_REQUEST = True
 
 WSGI_APPLICATION = 'dog_community.wsgi.application'
 

@@ -94,17 +94,18 @@ def adoption_dog_list(request):
     context['all_breeds'] = Breed.objects.all()
     context['filtered_dogs'] = Dogs.objects.filter(is_featured=True, is_adoption_ready=True, is_adopted=False)
     if(request.POST.get('action') == "filter_dogs"):
+        print("i am coming")
         filtered_dogs = Dogs.objects.filter(is_adoption_ready=True, breed_id=query_breed_id)
         template=  get_template('adoption.html')
         context['filtered_dogs'] = filtered_dogs
-        request.session['filtered_dogs'] = filtered_dogs
         result = template.render(context, request=request)
+        # request.session['filtered_dogs'] = filtered_dogs
         return HttpResponse(result)
     elif(request.POST.get('action') == "featured_dogs"):
         filtered_dogs = Dogs.objects.filter(is_adoption_ready=True, is_featured=True, is_adopted=False)
         template=  get_template('adoption.html')
         context['filtered_dogs'] = filtered_dogs
-        request.session['filtered_dogs'] = filtered_dogs
+        # request.session['filtered_dogs'] = filtered_dogs
         result = template.render(context, request=request)
         return HttpResponse(result)
     elif(request.POST.get('action') == "breed_name_to_breed_id"):

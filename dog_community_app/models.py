@@ -17,7 +17,7 @@ class Dogs(models.Model):
     dog_name = models.CharField(max_length=255)
     dog_color = models.CharField(max_length=255)
     dog_age = models.IntegerField()
-    dog_image = models.CharField(max_length=1024, default="")
+    dog_image = models.ImageField(upload_to='assets/img/', blank=True) # uploading the dog image in assets/img folder
     is_disable = models.BooleanField()
     disabilty = models.CharField(max_length=5000, blank=True)
     unique_identification = models.CharField(max_length=5000)

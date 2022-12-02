@@ -126,6 +126,9 @@
                 else{
                     $('#featured-dogs-text').html('Featured Dogs');
                 }
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText);
             }
         })
     }
