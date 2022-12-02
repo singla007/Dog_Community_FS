@@ -9,7 +9,8 @@ urlpatterns = [
     path('home', home_view, name='home'),
     path('breed-info', breedinfo_view, name="breed-info"),
     path('aboutus', aboutus_view, name="aboutus"),
-    path('report_dogs/<type>', report_dogs_view, name="report_dogs"),
+    path('report-dogs/<type>', report_dogs_view, name="report_dogs"),
+    path('report-dogs/<type>/form', report_dogs_form_view, name="report_dogs_form"),
     path('adoption', adoption_view, name="adoption"),
     path('adoption/list', adoption_dog_list, name="adoption_dog_list")
 

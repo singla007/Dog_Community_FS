@@ -58,6 +58,13 @@ class AdoptionDogDetailsForm(forms.ModelForm):
                 'class': 'form-control my-2'
             }),
         }
+# class MissingDogDetails(forms.ModelForm):
+#     class Meta:
+#         model = Dogs
+#         fields = [
+#             'dog_name',
+#             ''
+#         ]
 class MissingDogForm(forms.ModelForm):
     # model forms
     class Meta:
@@ -70,7 +77,7 @@ class MissingDogForm(forms.ModelForm):
             'category'
         ]
         widgets = {
-            'message': forms.Textarea(attrs={'cols': 80, 'rows': 20})
+            'description': forms.Textarea(attrs={'cols': 80, 'rows': 20})
         }
 
 class NewsletterForm(forms.ModelForm):

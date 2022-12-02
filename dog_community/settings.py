@@ -71,8 +71,8 @@ TEMPLATES = [
 ]
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT =BASE_DIR / 'media'
+MEDIA_URL = 'assets/img/'
+MEDIA_ROOT =BASE_DIR / 'dog_community_app/static/'
 
 WSGI_APPLICATION = 'dog_community.wsgi.application'
 

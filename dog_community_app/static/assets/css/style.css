@@ -297,6 +297,12 @@ img{
     color: #999999;
 }
 
+#hero .hero-img {
+    width: 100%;
+    object-fit: cover;
+    height: 100vh;
+}
+
 
 /*** Causes ***/
 #causes .img-fluid {
@@ -762,7 +768,107 @@ img{
 
 
 /* report dog */
-#report-dogs {
+
+#report-dogs 
+img{
+    height:320px;
+    width:100%;
+  }
+
+#report-button {
+    position: relative;
+    z-index: 2;
+}
+
+#report-dogs  a {
+    color: white;
+}
+
+#report-dogs 
+  div [class^="col-"]{
+    padding-left:15px;
+    padding-right:15px;
+  }
+
+  #report-dogs 
+  .card{
+    transition:0.5s;
+    cursor:pointer;
+  }
+
+  #report-dogs 
+  .card img{
+    overflow: hidden;
+  }
+#report-dogs
+  .card .card-img-overlay {
+    display: none;
+  }
+  #report-dogs
+  .card:hover .card-img-overlay {
+    color: white;
+    display: block;
+  }
+#report-dogs .card
+  .card-title{  
+    position: relative;
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    padding:0 10px;
+    z-index: 2;
+  }
+  #report-dogs .card
+  .card-title i{  
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    color:#ffa710
+  }
+  #report-dogs .card
+  .card-title i:hover{
+    transform: scale(1.25) rotate(100deg); 
+    color:#18d4ca;
+    
+  }
+  #report-dogs
+  .card:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  }
+  #report-dogs .card
+  .card-text{ 
+    position: relative;
+    padding: 0 10px;
+    z-index: 2;
+  }
+  #report-dogs
+  .card::before, .card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    background: rgba(0,0,0, 0.3);
+    content: '';
+    pointer-events: none;
+  }
+  #report-dogs 
+  .card::before {
+    transform-origin: left top;
+  }
+  #report-dogs
+  .card::after {
+    transform-origin: right bottom;
+  }
+  #report-dogs
+  .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+    transform: scale3d(1, 1, 1);
+  }
+
+#report-dogs-form {
     background-image: url("../img/SL-100420-36140-29.jpg");
     /* background-color: #2FB9CB;
     background-blend-mode: multiply; */
@@ -776,11 +882,11 @@ img{
     background-size: cover;
     overflow: hidden;
 }
-.report-dogs {
+.report-dogs-form {
     margin-top: 200px;
 }
 
-#report-dogs .report-tag {
+#report-dogs-form .report-tag {
     background-color: var(--primary);
     color: white;
     padding-bottom: 10px;

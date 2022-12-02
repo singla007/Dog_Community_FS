@@ -43,11 +43,17 @@ def breedinfo_view(request):
     return render(request, "breed-info.html", context)
 
 def report_dogs_view(request, type):
+    print(request.path)
     context = {}
-    print(type)
-    if request.method == 'GET':
-        context['all_breeds'] = Breed.objects.all()
+    context['report_type'] = type
+    context['all_breeds'] = Breed.objects.all()
+    
     return render(request, "report_dogs.html", context)
+
+def report_dogs_form_view(request, type):
+    context = {}
+    context['all_breeds'] = Breed.objects.all()
+    return render(request, "report_dogs_form.html", context)
 
 def meetup_view(request):
     return render(request, "meetup.html")
@@ -56,17 +62,18 @@ def adoption_view(request):
     context = {}
     adoption_dog_form = AdoptionDogDetailsForm(request.POST or None)
     adoption_user_form = UserDetailsForm(request.POST or None)
-    print("checking")
     context['adoption_dog_form'] = adoption_dog_form
     context['adoption_user_form'] = adoption_user_form
-    print('action-adopt' in request.POST)
+    context['all_breeds'] = Breed.objects.all()
+    context['filtered_dogs'] = request.session.get(
+        'filtered_dogs',
+        Dogs.objects.filter(is_featured=True, is_adoption_ready=True, is_adopted=False)
+        )
     if('action-adopt' in request.POST):
         if adoption_dog_form.is_valid() and adoption_user_form.is_valid():
-            print(request.POST)
             adoption_user_form.save()
             user_name_p = request.POST.get('user_name')
             dog_name_p = request.POST.get('dog_name')
-            print(dog_name_p)
             user_id = -1
             dog_id = -1
             for user in User.objects.filter(user_name=user_name_p):
@@ -75,19 +82,6 @@ def adoption_view(request):
                 dog_id = dog.dog_id
             
             Adoption.objects.create(dog_id=dog_id,user_id=user_id)
-            context['all_breeds'] = Breed.objects.all()
-            context['filtered_dogs'] = request.session.get(
-                'filtered_dogs',
-                Dogs.objects.filter(is_featured=True, is_adoption_ready=True, is_adopted=False)
-                )
-        
-            
-            
-    if request.method == 'GET':
-        context['all_breeds'] = Breed.objects.all()
-        context['filtered_dogs'] = Dogs.objects.filter(is_featured=True, is_adoption_ready=True, is_adopted=False)
-        context['selected_dog_detail'] = {}
-    
     return render(request, "adoption.html", context)
 
 def adoption_dog_list(request):

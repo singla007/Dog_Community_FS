@@ -67,6 +67,17 @@
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
+    $("#scrollToMain").click(function() {
+        console.log("i am here!")
+        window.scrollTo({
+            behavior: 'smooth',
+            top:
+                document.getElementById("main-section").getBoundingClientRect().top -
+                document.body.getBoundingClientRect().top -
+                80,
+        }) 
+        
+    });
 
     $("#find-breed").click(function( event ) {
         event.preventDefault();

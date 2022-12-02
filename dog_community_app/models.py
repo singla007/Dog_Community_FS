@@ -47,7 +47,6 @@ class Reports(models.Model):
     last_known_location = models.CharField(max_length=5000)
     category = models.CharField(max_length=255)
 
-
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     user_name = models.CharField(max_length=255)
@@ -64,13 +63,11 @@ class Admin(models.Model):
     admin_login_id = models.CharField(max_length=255)
     admin_login_pass = models.CharField(max_length=255)
 
-
 class Team(models.Model):
     member_id = models.IntegerField(primary_key=True)
     full_name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255)
     member_image = models.CharField(max_length=1024, default="")
-
 
 class ContactUs(models.Model):
     name = models.CharField(max_length=255)
@@ -79,8 +76,6 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return self.name
-
-
 
 class Newsletter(models.Model):
     email = models.EmailField(max_length=255)
