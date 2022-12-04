@@ -279,5 +279,5 @@ def getUserName(request):
     if(request.user is not None):
         if request.user.get_full_name() != '':
             name = request.user.get_full_name() 
-    return name
+    return name.title()
 
