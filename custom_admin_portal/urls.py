@@ -13,8 +13,9 @@ urlpatterns = [
     path('register_dog',register_dog,name='register_dog'),
     path('add_event',add_event,name='add_event'),
     path('add_dog',add_dog_html,name='add_dog'),
-    path('map',map,name='map'),
+    path('update_dog',update_dog,name='update_dog'),
+     path('update_dog_html',update_dog_html,name='update_dog_html'),
     path('add_breed_html',add_breed_html,name='add_breed_html'),
-    path('adminHome',adminHome,name='adminHome'),
+    path('adminHome',dashboard,name='adminHome'),
      path('add_event_html',add_event_html,name='add_event_html'),
 ]
