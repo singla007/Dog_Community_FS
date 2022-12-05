@@ -11,6 +11,11 @@ urlpatterns = [
     path('aboutus', aboutus_view, name="aboutus"),
     path('report-dogs/<type>', report_dogs_view, name="report_dogs"),
     path('report-dogs/<type>/form', report_dogs_form_view, name="report_dogs_form"),
+    path('meetup', meetup_view, name="meetup"),
+    path('report-dogs/missing/form/success/<user_id>/<id>', success_view, name="missing-form-success"),
+    path('report-dogs/stray/form/success/<user_id>/<id>', success_view, name="stray-form-success"),
+    path('meetup/success/<user_id>/<id>', success_view, name="meetup-success"),
+    path('adoption/success/<user_id>/<id>', success_view, name="adoption-success"),
     path('adoption', adoption_view, name="adoption"),
     path('adoption/list', adoption_dog_list, name="adoption_dog_list")
 

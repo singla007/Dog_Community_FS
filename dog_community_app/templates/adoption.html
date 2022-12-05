@@ -97,9 +97,11 @@
                                     </datalist> {% endcomment %}
                                     {% for field in adoption_dog_form%}
                                         {{field}}
+                                        {{field.errors}}
                                     {% endfor%}
                                     {% for field in adoption_user_form%}
                                         {{field}}
+                                        {{field.errors}}
                                     {% endfor%}
                                     <input type="hidden" name="action-adopt" value="action-adopt"/>
                                     {% comment %} <div class="mb-3"><input list="dog_list" class="form-control text-center" style="width: 160px;" type="text" id="dog_name" name="dog_name" placeholder="Enter dog name"/></div>

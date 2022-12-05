@@ -7,8 +7,11 @@ class Breed(models.Model):
     life_span = models.CharField(max_length=1000, default="")
     temperament = models.CharField(max_length=1000, default="")
     origin = models.CharField(max_length=1000, default="")
-    breed_image_path = models.ImageField(upload_to='images/breeds')
+    breed_image_path = models.ImageField(upload_to='images/breeds', blank=True)
     breed_article = models.CharField(max_length=1024, default="")
+    
+    def __str__(self):
+        return self.breed_name
 
 class Dogs(models.Model):
     dog_id = models.AutoField(primary_key=True)
@@ -23,13 +26,16 @@ class Dogs(models.Model):
     unique_identification = models.CharField(max_length=5000)
     is_adoption_ready = models.BooleanField()
     is_featured = models.BooleanField(default=False) # dogs which are loaded without filteration
+    
+    def __str__(self):
+        return self.dog_name
 
-
-class EventSubscriptions(models.Model):
-    subscription_id = models.AutoField(primary_key=True)
+class EventSubscription(models.Model):
     event = models.ForeignKey('Events', on_delete=models.DO_NOTHING)
     user = models.ForeignKey('User', on_delete=models.DO_NOTHING)
-
+    
+    def __str__(self):
+        return self.event
 
 class Events(models.Model):
     event_id = models.AutoField(primary_key=True)
@@ -39,7 +45,9 @@ class Events(models.Model):
     event_capacity = models.IntegerField()
     event_description = models.CharField(max_length=5000)
     event_image = models.ImageField(upload_to='images/events',default='images/default_event.jpg')
-
+    
+    def __str__(self):
+        return self.event_location
 
 class Reports(models.Model):
     dog = models.ForeignKey(Dogs, on_delete=models.DO_NOTHING)
@@ -54,6 +62,9 @@ class User(models.Model):
     user_address = models.CharField(max_length=5000, blank=True)
     user_contact = models.CharField(max_length=20)
     user_email = models.EmailField(max_length=255)
+    
+    def __str__(self):
+        return self.user_name
 
 class Adoption(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
@@ -69,6 +80,9 @@ class Team(models.Model):
     full_name = models.CharField(max_length=255)
     designation = models.CharField(max_length=255)
     member_image = models.CharField(max_length=1024, default="")
+    
+    def __str__(self):
+        return self.full_name
 
 class ContactUs(models.Model):
     name = models.CharField(max_length=255)
@@ -80,3 +94,6 @@ class ContactUs(models.Model):
 
 class Newsletter(models.Model):
     email = models.EmailField(max_length=255)
+    
+    def __str__(self):
+        return self.email

@@ -52,7 +52,7 @@
                 {% comment %} <p id="featured-dogs-text" class="mb-5 sub-heading text-center">{{breed.breed_name}}</p> {% endcomment %}
                     <div class="col-lg-4 col-sm-6">
                         <div class="card card-block">
-                            <img class="card-img-top" src="{{breed.breed_image_path}}" alt="{{breed.breed_name}}">
+                            <img class="card-img-top" src="{%static "" %}{{breed.breed_image_path}}" alt="{{breed.breed_name}}">
                             {% comment %} <div class="card-img-overlay">
                                 <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
                                 

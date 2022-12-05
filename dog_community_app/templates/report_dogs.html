@@ -35,39 +35,30 @@
     <div class="container-fluid bg-light py-2 py-xl-3" id="main-section">
         <section id="report-dogs-top" class="container py-2">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Adoptable Dogs</div>
-                <h1 class="display-6 mb-5">Give the dog a live it deserves</h1>
+                <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Reported Dogs</div>
+                <h1 class="display-6 mb-5">{% if 'missing' in request.path %}Have you seen me?{% else %}Stray dogs we saved</h1>
             </div>
-            {% csrf_token %}
-            {% comment %} <select class="form-select" autoComplete="on" aria-label="Default select example" name="breed_id" id="filter-by-breed" action="{% url 'report_dogs' %}">
-                <option selected value="-1">Select the breed</option>
-                {% for breed in all_breeds %}
-                <option value="{{breed.breed_id}}">{{breed.breed_name}}</option>
-                {% endfor %}
-            </select> {% endcomment %}
-            <input type="hidden" name="action" value="filter_by_breed"/>
-            
+            {% csrf_token %}            
         </section>
         <section id="report-dogs-list" class="container">
-            <p id="featured-dogs-text" class="mb-5 sub-heading text-center">Featured Dogs</p>
             <div class="row">
                 {% for dog in filtered_dogs %}
                 <div class="col-md-3 col-sm-6">
                     <div class="card card-block">
-                        <img class="card-img-top" src="{%static "" %}{{dog.dog_image}}" alt="{{dog.dog_name}}">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
-                            <h5 class="card-title text-center mt-3 mb-3">{{dog.dog_name}}</h5>
-                            <p class="card-text text-center">Age: {{dog.dog_age}}</p>
-                            <p class="card-text text-center">Color: {{dog.dog_color}}</p>
-                            <div class="d-flex justify-content-center mt-5">
-                                <button onclick="$(this).adoptButton();" data-dog-id={{dog.dog_id}} data-url={%url 'report_dogs'%} id="report-button" class="btn btn-primary py-2 px-3 animated slideInDown">
-                                    Adopt
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </button>
-                            </div>
+                        <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
+                        <h5 class="card-title text-center mt-3 mb-3">{{dog.dog_name}}</h5>
+                        <img class="card-img" src="{%static "" %}{{dog.dog_image}}" alt="{{dog.dog_name}}"/>
+                            
+                            
+                        <p class="card-text text-center">Age: {{dog.dog_age}}</p>
+                        <p class="card-text text-center">Color: {{dog.dog_color}}</p>
+                        <div class="d-flex justify-content-center mt-5">
+                            <button onclick="$(this).adoptButton();" data-dog-id={{dog.dog_id}} data-url={%url 'report_dogs'%} id="report-button" class="btn btn-primary py-2 px-3 animated slideInDown">
+                                Adopt
+                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </button>
                         </div>
                         
                     </div>
