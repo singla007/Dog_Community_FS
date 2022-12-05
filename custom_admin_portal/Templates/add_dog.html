@@ -2,79 +2,81 @@
 <html dir="ltr" lang="en">
 
 <head>
-    {% load static %}  
+    {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords"
         content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Monsterlite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Monster admin lite design, Monster admin lite dashboard bootstrap 5 dashboard template">
-        <meta name="description"
+    <meta name="description"
         content="A platform to bond/socialize dogs and dog owners with each other and help missing dogs have high probability of being found, given a chance to return to their previous owners or get new owners, and stray dogs have the same benefit.">
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Portal | Dog Community </title>
     <link rel="canonical" href="/aboutustemplates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin-dashboard/images/favicon.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin/images/favicon.ico' %}">
     <!-- Custom CSS -->
     <link href="{% static 'admin-dashboard/css/style.min.css' %}" rel="stylesheet">
-    
+
 </head>
 
 <body>
-    
+
     <!-- Preloader - style you can find in spinners.css -->
-    
+
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    
+
     <!-- Main wrapper - style you can find in pages.scss -->
-    
+
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        
+
         <!-- Topbar header - style you can find in pages.scss -->
-        
+
         <header class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark" style="background-color: black; ">
                 <div class="navbar-header">
-                    <!-- Logo --> <a class="navbar-brand ms-4 ms-lg-0" href="index.html">
-                        <img style="margin-left: 40%;" width="60px" height="60px" 
-                        src="{% static 'assets/img/logo.png' %}" alt="brand-logo" />
+                    <!-- Logo --> <a class="navbar-brand ms-4 ms-lg-0" href="{% url 'dashboard' %}">
+                        <img style="margin-left: 40%;" width="60px" height="60px"
+                            src="{% static 'assets/img/logo.png' %}" alt="brand-logo" />
                     </a>
                     <!-- End Logo -->
                     <!-- toggle and nav items --><a
                         class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
-                
+
                 <!-- End Logo -->
-                
+
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    
-                    
+
+
                     <!-- toggle and nav items -->
-                    
+
                     <ul class="navbar-nav me-auto mt-md-0 ">
-                        
-                        <p style="font-size:x-large; font-weight: bold; margin:auto; color: #FF6F0F;">Dog Community Admin Portal </p>
-                        
+
+                        <p style="font-size:x-large; font-weight: bold; margin:auto; color: #FF6F0F;">Dog Community
+                            Admin Portal </p>
+
                     </ul>
 
-                    
+
                     <!-- Right side toggle and nav items -->
-                    
+
                     <ul class="navbar-nav">
-                        
+
                         <!-- User profile and search -->
-                        
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Hi, {{user.name}}
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hi, {{customAdmin}}
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -82,12 +84,12 @@
                 </div>
             </nav>
         </header>
-        
+
         <!-- End Topbar header -->
-        
-        
+
+
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        
+
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
@@ -96,28 +98,30 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="{% url 'adminHome' %}" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="{% url 'add_dog' %}" aria-expanded="false">
-                            <i class="me-3 fa fa-user" aria-hidden="true"></i><span
-                                class="hide-menu">Add Dog For Adoption</span></a>
-                    </li>
-                    <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="}" aria-expanded="false"><i class="me-3 fa fa-table"
-                                aria-hidden="true"></i><span class="hide-menu">Add Report</span></a></li> -->
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="{% url 'add_breed_html' %}" aria-expanded="false"><i class="me-3 fa fa-font"
-                                aria-hidden="true"></i><span class="hide-menu">Add Breed</span></a></li>
+                                href="{% url 'adminHome' %}" aria-expanded="false"><i class="me-3 fa fa-home"
+                                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{% url 'add_dog' %}" aria-expanded="false">
+                                <i class="me-3 fa fa-user" aria-hidden="true"></i><span class="hide-menu">Add Dog For
+                                    Adoption</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{% url 'update_dog_html' %}" aria-expanded="false"><i class="me-3 fa fa-table"
+                                    aria-hidden="true"></i><span class="hide-menu">Update Dog After Adoption</span></a>
+                        </li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="{% url 'add_event_html' %}" aria-expanded="false"><i class="me-3 fa fa-columns"
-                                aria-hidden="true"></i><span class="hide-menu">Add event</span></a></li>
-                    
-                    <li class="text-center p-20 upgrade-btn">
-                        <a href="{% url 'logout' %}"
-                                class="btn btn-danger text-white mt-4" target="_self">Log Out</a>
-                    </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{% url 'add_breed_html' %}" aria-expanded="false"><i class="me-3 fa fa-paw"
+                                    aria-hidden="true"></i><span class="hide-menu">Add Breed</span></a></li>
+
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{% url 'add_event_html' %}" aria-expanded="false"><i class="me-3 fa fa-calendar"
+                                    aria-hidden="true"></i><span class="hide-menu">Add event</span></a></li>
+
+                        <li class="text-center p-20 upgrade-btn">
+                            <a href="{% url 'logout' %}" class="btn btn-danger text-white mt-4" target="_self">Log
+                                Out</a>
+                        </li>
                     </ul>
 
                 </nav>
@@ -125,20 +129,20 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        
+
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        
-        
+
+
         <!-- Page wrapper  -->
-        
+
         <div class="page-wrapper">
-            
+
             <!-- Bread crumb and right sidebar toggle -->
-            
+
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Profile</h3>
+                        <h3 class="page-title mb-0 p-0">Dog Adoption</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -150,53 +154,63 @@
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
                         <div class="text-end upgrade-btn">
-                            <a href="/"
-                            class="btn btn-warn d-none d-md-inline-block text-white" target="_blank">Dog Community User Portal</a>
+                            <a href="/" class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Go
+                                To User Portal</a>
 
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- End Bread crumb and right sidebar toggle -->
-            
-            
+
+
             <!-- Container fluid  -->
-            
+
             <div class="container-fluid">
-                
+
                 <!-- Start Page Content -->
-                
+
                 <!-- Row -->
                 <div class="row">
                     <!-- Column -->
                     <div class="col-lg-2 col-xlg-1 col-md-3">
-                        
+
                     </div>
                     <!-- Column -->
                     <!-- Column -->
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-body">
-                                <form enctype="multipart/form-data" name="add_dog_form"class="form-horizontal form-material mx-2" onsubmit="return validateForm()" method="POST" action="{% url 'register_dog' %}">
+                                <form enctype="multipart/form-data" name="add_dog_form"
+                                    class="form-horizontal form-material mx-2" onsubmit="return validateForm()"
+                                    method="POST" action="{% url 'register_dog' %}">
                                     {% csrf_token %}
-                                    <h2 class="mb-3" >Add Dog for Adoption</h2>
+                                    <h2 class="mb-3">Add Dog for Adoption</h2>
 
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Dog Name</label>
                                         <div class="col-md-12">
                                             <input required type="text" placeholder="Enter Dog Name"
                                                 class="form-control ps-0 form-control-line" name="dog_name">
-                                                <span id="dog_name_error"></span>
+                                            <span id="dog_name_error"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="example-email" class="col-md-12">Breed Name</label>
+                                        <label for="breed_id" class="col-md-12">Choose Breed Name</label>
                                         <div class="col-md-12">
-                                            <input required type="text" placeholder="Breed Name"
+                                            <select required class="form-select form-control form-control-line ps-0 "
+                                                name="breed_id" id="breed_id">
+                                                <option value="none" selected disabled hidden>Select a Breed from list
+                                                </option>
+                                                {% for breed in breeds %}
+                                                <option value={{breed.breed_id}} id="messages">{{breed.breed_name}}</p>
+                                                    {% endfor %}
+                                            </select>
+                                            <!-- <input required type="text" placeholder="Breed Name"
                                                 class="form-control ps-0 form-control-line" name="breed_name"
-                                                id="breed_name">
-                                                <span id="breed_name_error"></span>
+                                                id="breed_name"> -->
+                                            <span id="breed_name_error"></span>
                                         </div>
                                     </div>
                                     <!-- <div class="form-group">
@@ -213,10 +227,9 @@
                                     <div class="form-group">
                                         <label for="example-email" class="col-md-12">Dog Age</label>
                                         <div class="col-md-12">
-                                            <input required type="text" placeholder="Age"
-                                                class="form-control ps-0 form-control-line" name="dog_age"
-                                                id="dog_age">
-                                                <span id="dog_age_error"></span>
+                                            <input required type="number" min="0" placeholder="Age"
+                                                class="form-control ps-0 form-control-line" name="dog_age" id="dog_age">
+                                            <span id="dog_age_error"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -225,36 +238,40 @@
                                             <input required type="text" placeholder="Dog Colour"
                                                 class="form-control ps-0 form-control-line" name="dog_colour"
                                                 id="dog_color">
-                                                <span id="dog_colour_error"></span>
+                                            <span id="dog_colour_error"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Is Disabled</label>
                                         <div class="col-md-12">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="is_disable" id="inlineRadiodisabled1" value="1">
+                                                <input class="form-check-input" type="radio" name="is_disable"
+                                                    id="inlineRadiodisabled1" value="1">
                                                 <label class="form-check-label" for="inlineRadiodisabled1">YES</label>
-                                              </div>
-                                              <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="is_disable" id="inlineRadioDisabled2" value="0" checked>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="is_disable"
+                                                    id="inlineRadioDisabled2" value="0" checked>
                                                 <label class="form-check-label" for="inlineRadioDisabled2">NO</label>
-                                              </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Disabilty</label>
                                         <div class="col-md-12">
-                                            <textarea id="disabilty" disabled name='disabilty' rows="5" class="form-control ps-0 form-control-line"></textarea>
+                                            <textarea id="disabilty" disabled name='disabilty' rows="5"
+                                                class="form-control ps-0 form-control-line"></textarea>
                                         </div>
                                     </div>
-                                                                <div class="form-group">
-                                            <label class="col-md-12 mb-0">Unique indentification</label>
-                                            <div class="col-md-12">
-                                                <textarea id="unique_identification" name="unique_identification" rows="3" class="form-control ps-0 form-control-line"></textarea>
-                                            </div>
-                                            <span id="unique_identification_error"></span>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Unique indentification</label>
+                                        <div class="col-md-12">
+                                            <textarea id="unique_identification" name="unique_identification" rows="3"
+                                                class="form-control ps-0 form-control-line"></textarea>
                                         </div>
-                                        <!-- <div class="form-group">
+                                        <span id="unique_identification_error"></span>
+                                    </div>
+                                    <!-- <div class="form-group">
                                             <label class="col-md-12 mb-0">Is Adoption Ready  </label>
                                             <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="is_adoption_ready" id="adoptionReadyRadio1" value="0">
@@ -266,32 +283,35 @@
                                           </div>
                                         </div> -->
 
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label class="col-md-12 mb-0">Dog Image</label>
+                                            <div class="col-md-12">
+                                                <input type="file" name="dog_image_path" required
+                                                    accept="image/x-png,image/gif,image/jpeg"
+                                                    class="form-control-file  form-control">
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-12 d-flex">
+                                                <button type="submit"
+                                                    class="btn btn-success mx-auto mx-md-0 text-white">Add Dog For
+                                                    Adoption</button>
+                                            </div>
+                                        </div>
+                                        <br>
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label class="col-md-12 mb-0">Dog Image</label>
+                                                <label class="col-md-12 mb-0"></label>
                                                 <div class="col-md-12">
-                                                    <input type="file" name="dog_image_path" required accept="image/x-png,image/gif,image/jpeg"
-                                                    class="form-control-file  form-control">
+                                                    {% for message in messages %}
+                                                    <p id="messages" class="text-info">{{message}}</p>
+                                                    {% endfor %}
                                                 </div>
                                             </div>
-                                            <br>
-                                    
-                                    <div class="form-group">
-                                        <div class="col-sm-12 d-flex" >
-                                            <button type="submit" class="btn btn-success mx-auto mx-md-0 text-white">Add Dog For Adoption</button>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label class="col-md-12 mb-0"></label>
-                                            <div class="col-md-12">
-                                                {% for message in messages %}
-                                                <p id="messages">{{message}}</p>
-                                            {% endfor %}	
-                                            </div>
-                                        </div>
-                                   
+
                                 </form>
                             </div>
                         </div>
@@ -299,35 +319,35 @@
                     <!-- Column -->
                 </div>
                 <!-- Row -->
-                
+
                 <!-- End PAge Content -->
-                
-                
+
+
                 <!-- Right sidebar -->
-                
+
                 <!-- .right-sidebar -->
-                
+
                 <!-- End Right sidebar -->
-                
+
             </div>
-            
+
             <!-- End Container fluid  -->
-            
-            
+
+
             <!-- footer -->
-            
+
             <footer class="footer text-center">
-                ©  Dog Community  <a href="/aboutus">portal</a>
+                © Dog Community <a href="/aboutus">portal</a>
             </footer>
-            
+
             <!-- End footer -->
-            
+
         </div>
-        
+
         <!-- End Page wrapper  -->
-        
+
     </div>
-    
+
     <!-- End Wrapper -->
     <script>
         console.log("script is running!!")
@@ -337,7 +357,7 @@
         document.getElementById('inlineRadiodisabled1').onchange = function () {
             document.getElementById('disabilty').disabled = false;
         };
-            
+
         function validateForm() {
             console.log("in validation")
             let dog_name = document.forms["add_dog_form"]["dog_name"].value;
@@ -345,67 +365,67 @@
             let dog_age = document.forms["add_dog_form"]["dog_age"].value;
             let dog_colour = document.forms["add_dog_form"]["dog_colour"].value;
             let unique_identification = document.forms["add_dog_form"]["unique_identification"].value;
-            var  flag = 0
-            if (! isNaN(dog_name)) {
+            var flag = 0
+            if (!isNaN(dog_name)) {
                 console.log("in validation dog name")
                 dog_name_error.textContent = "Please enter valid dog name"
                 document.getElementById("dog_name_error").style.color = "red"
                 flag = 1;
-                
+
             }
-            else{
+            else {
                 dog_name_error.textContent = ""
             }
-             if(! isNaN(dog_breed)){
-                console.log("in validation dog breed ")
-                document.getElementById("breed_name_error").textContent = "Please enter valid breed name"
-                document.getElementById("breed_name_error").style.color = "red"
-                flag = 1;
-            }
-            else{
-                document.getElementById("breed_name_error").textContent = ""
-            }
-             if( isNaN(dog_age)){
+            // if (!isNaN(dog_breed)) {
+            //     console.log("in validation dog breed ")
+            //     document.getElementById("breed_name_error").textContent = "Please enter valid breed name"
+            //     document.getElementById("breed_name_error").style.color = "red"
+            //     flag = 1;
+            // }
+            // else {
+            //     document.getElementById("breed_name_error").textContent = ""
+            // }
+            if (isNaN(dog_age)) {
                 console.log("in validation dog age")
                 document.getElementById("dog_age_error").textContent = "Please enter valid age in numbers only"
                 document.getElementById("dog_age_error").style.color = "red"
                 flag = 1;
             }
-            else{
+            else {
                 document.getElementById("dog_age_error").textContent = ""
             }
-             if(! isNaN(dog_colour)){
+            if (!isNaN(dog_colour)) {
                 console.log("in validation dog colour")
                 document.getElementById("dog_colour_error").textContent = "Please enter valid colour"
                 document.getElementById("dog_colour_error").style.color = "red"
                 flag = 1;
             }
-            else{
-                document.getElementById("dog_colour_error").textContent =""
+            else {
+                document.getElementById("dog_colour_error").textContent = ""
             }
-            if(! isNaN(unique_identification)){
+            if (!isNaN(unique_identification)) {
                 console.log("in validation uniqe identtification")
                 document.getElementById("unique_identification_error").textContent = "Please enter text value"
                 document.getElementById("unique_identification_error").style.color = "red"
                 flag = 1;
             }
-            else{
+            else {
                 document.getElementById("unique_identification_error").textContent = ""
             }
-           if(flag  = 0) {
-            console.log("in validation flag  = 0")
-            return true;
+            if (flag = 0) {
+                console.log("in validation flag  = 0")
+                return true;
             }
-            else{
+            else {
                 console.log("in validation flag = 1")
                 return false;
             }
         }
     </script>
 
-    
+
     <!-- All Jquery -->
-    
+
     <script src="{% static 'admin-dashboard/plugins/jquery/dist/jquery.min.js' %}"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static 'admin-dashboard/plugins/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>

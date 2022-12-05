@@ -7,15 +7,15 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
+import datetime 
 
 
-# Create your views here.
 from .forms import  CreateUserForm
 # ,DogCreationForm
 
 def register(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return redirect('dashboard')
 	else:
 		form = CreateUserForm()
 		if request.method == 'POST':
@@ -26,19 +26,19 @@ def register(request):
 				user.is_active = False
 				user.save()
 				user = form.cleaned_data.get('username')
-				messages.success(request, 'Account was created for ' + user)
+				messages.success(request, 'Account is created for ' + user)
+				messages.success(request, 'It is yet to be activated by system Administartor')
 
-				return redirect('login')
 			else:
-				print(messages.get_messages(request))
+				messages.info(request, 'Failed: Registration Failed')
 			
 
 		context = {'form':form}
-		return render(request, 'adminPortal/register.html', context)
+		return render(request, 'register.html', context)
 
 def admin_login(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return redirect('dashboard')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -50,33 +50,51 @@ def admin_login(request):
 				login(request, user)
 				return redirect('dashboard')
 			else:
-				messages.info(request, 'Username OR password is incorrect')
+				messages.info(request, 'Username / password is either incorrect or account is yet to be activated')
+				
 
 		context = {}
-		return render(request, 'adminPortal/login.html', context)
+		return render(request, 'login.html', context)
 
 @cache_control(no_cache=True, must_revalidate=True)
 def admin_logout(request):
 	logout(request)
 	request.session.flush()
 	return render(request, 'logout.html')
-
-
-def error_page(request):
-    return render(request,'error.html')
     
 @login_required(login_url='login')  
 def dashboard(request):
-    breed= Breed.objects.all().values()
+    breeds= Breed.objects.all().values()
     dogs= Dogs.objects.all().values()
-    print(breed)
+    reports = Reports.objects.all().values()
+    upcomingEvents = Events.objects.filter(event_time__gte=datetime.date.today()).values()
+    events = Events.objects.all().values()
+
+    if reports is None:
+        reports =''
+    if breeds is None:
+        breeds = ''
+    if dogs is None:
+        dogs = ''
+    if events is None:
+        events = ''
+    if upcomingEvents is None:
+        upcomingEvents=''
     context = {
         "dog":dogs,
-        "breed":breed,
-        "report":{},
-        "customAdmin": request.user.get_full_name()
+        "breed":breeds,
+        "reports":reports,
+        "customAdmin": getUserName(request),
+        "events":upcomingEvents,
+        "totalDogs":len(dogs),
+        "totalBreeds":len(breeds),
+        "totalReports":len(reports),
+        "totalEvents": len(events)
     }
-    return render(request, 'dashboard/index.html',context)
+    return render(request, 'dashboard.html',context)
+
+def error_page(request):
+    return render(request,'error.html')
 
 @login_required(login_url='login')
 def add_breed(request):
@@ -96,18 +114,18 @@ def add_breed(request):
 
             if breed is not None:
                 messages.success(request, 'Sucess: Breed Added')
-                return redirect('dashboard')
+                return redirect('add_breed_html')
             else:
                 messages.error(request, 'Failure: Breed can not be added')
         else:
             redirect('login')        
-    return redirect('dashboard')
+    return redirect('add_breed_html')
 
 @login_required(login_url='login')
 def register_dog(request):
     if request.method == 'POST':
         dog_name = request.POST.get('dog_name')
-        dog_color =request.POST.get('dog_color')
+        dog_color =request.POST.get('dog_colour')
         dog_age = request.POST.get('dog_age')
         is_disable = request.POST.get('is_disable')
         breed_id = request.POST.get('breed_id')
@@ -127,11 +145,11 @@ def register_dog(request):
        
         if dog is not None:
             messages.success(request, 'Sucess: Dog Added for adoption')
-            return redirect('dashboard')
+            return redirect('add_dog')
         else:
             messages.error(request, 'Failure: Dog can not be added for adoption')
 
-    return redirect('dashboard')
+    return redirect('add_dog')
 
 def add_reporter_user(user_name,user_address,user_contact,user_email):
    
@@ -154,9 +172,9 @@ def search_and_add_breed(breed_name,dog_image):
 def add_dog(breed_id,is_adopted,dog_name, dog_color, dog_age, is_disable, disabilty, unique_identification, is_adoption_ready, dog_image):
     dog = Dogs.objects.create(breed_id=breed_id, is_adopted= is_adopted,dog_name= dog_name,dog_color= dog_color, dog_age= dog_age, is_disable= is_disable, disabilty=disabilty, unique_identification=unique_identification, is_adoption_ready=is_adoption_ready, dog_image=dog_image)
     if dog is not None:
-            return dog.dog_id
+        return dog.dog_id
     else:
-            return -1
+        return -1
 
 @login_required(login_url='login') 
 def add_event(request):
@@ -166,6 +184,7 @@ def add_event(request):
     event_capacity = request.POST.get('event_capacity')
     event_description = request.POST.get('event_description')
     event_image = request.FILES.get('event_image')
+    event = None
     event = Events.objects.create(event_location=event_location, event_duration=event_duration, event_time=event_time,event_capacity=event_capacity,event_description=event_description,event_image=event_image)
 
     if event is not None:
@@ -173,22 +192,11 @@ def add_event(request):
     else:
         messages.error(request, 'Failure: Event can not be added')
        
-    return redirect('dashboard')
+    return redirect('add_event_html')
 
 def event_subscribe(request):
     pass
     return redirect('dashboard')
-@login_required(login_url='login')
-def adminHome(request):
-    breed= Breed.objects.all().values()
-    dogs= Dogs.objects.all().values()
-    context = {
-        "dogs":dogs,
-        "breeds":breed,
-        "report":{},
-        "customAdmin": request.user.get_full_name()
-    }
-    return render(request,'dashboard/index.html',context)
 
 
 @login_required(login_url='login') 
@@ -199,13 +207,9 @@ def add_breed_html(request):
         "dogs":dogs,
         "breeds":breed,
         "report":{},
-        "customAdmin": request.user.get_full_name()
+        "customAdmin": getUserName(request)
     }
-    return render(request,'dashboard/add_breed.html',context)
-
-@login_required(login_url='login')
-def map(request):
-    return render(request,'dashboard/map-google.html')
+    return render(request,'add_breed.html',context)
 
 
 @login_required(login_url='login')
@@ -216,9 +220,9 @@ def add_dog_html(request):
         "dogs":dogs,
         "breeds":breed,
         "report":{},
-        "customAdmin": request.user.get_full_name()
+        "customAdmin": getUserName(request)
     }
-    return render(request,'dashboard/add_dog.html',context)
+    return render(request,'add_dog.html',context)
 @login_required(login_url='login')
 def add_event_html(request):
     breed= Breed.objects.all().values()
@@ -227,9 +231,9 @@ def add_event_html(request):
         "dogs":dogs,
         "breeds":breed,
         "report":{},
-        "customAdmin": request.user.get_full_name()
+        "customAdmin": getUserName(request)
     }
-    return render(request,'dashboard/add_event.html',context)
+    return render(request,'add_event.html',context)
 
 @login_required(login_url='login')
 def update_dog_html(request):
@@ -239,16 +243,41 @@ def update_dog_html(request):
         "dogs":dogs,
         "breeds":breeds,
         "report":{},
-        "customAdmin": request.user.get_full_name()
+        "customAdmin": getUserName(request)
     }
-    return render(request,'dashboard/update_dog.html',context)
-def update_report_status(request):
-    breeds= Breed.objects.all().values()
-    dogs= Dogs.objects.all().values()
-    context = {
-        "dogs":dogs,
-        "breeds":breeds,
-        "report":{},
-        "customAdmin": request.user.get_full_name()
-    }
-    pass
+    return render(request,'update_dog.html',context)
+
+@login_required(login_url='login')
+def update_dog(request):
+    if request.method == 'POST':
+        breeds= Breed.objects.all().values()
+        dogs= Dogs.objects.all().values()
+        context = {
+            "dogs":dogs,
+            "breeds":breeds,
+            "report":{},
+            "customAdmin": getUserName(request)
+        }
+        dog_id = request.POST.get('dog_details').split(",")[0]
+        isAdopted = request.POST.get('is_adopted').lower() in ("yes", "true", "t", "1")
+        
+        dog = Dogs.objects.get(dog_id=dog_id)
+        dog.is_adopted = isAdopted
+        dog.is_featured  = isAdopted
+        dog.save()
+
+        if dog is not None:
+            messages.success(request, 'Sucess: Dog Updated after adoption')
+            return render(request,'update_dog.html',context)
+        else:
+            messages.error(request, 'Failure: Dog can not be updated after adoption')
+
+        return render(request,'update_dog.html',context)
+    return redirect('update_dog_html')   
+def getUserName(request):
+    name = request.user  
+    if(request.user is not None):
+        if request.user.get_full_name() != '':
+            name = request.user.get_full_name() 
+    return name
+

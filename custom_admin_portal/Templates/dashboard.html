@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Portal | Dog Community </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin-dashboard/images/favicon.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin/images/favicon.ico' %}">
     <!-- Custom CSS -->
     <link href="{% static 'admin-dashboard/plugins/chartist/dist/chartist.min.css' %}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -32,7 +32,7 @@
         <header class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark" style="background-color: black; ">
                 <div class="navbar-header">
-                    <!-- Logo --> <a class="navbar-brand ms-4 ms-lg-0" href="index.html">
+                    <!-- Logo --> <a class="navbar-brand ms-4 ms-lg-0" href="{% url 'dashboard' %}">
                         <img style="margin-left: 40%;" width="60px" height="60px" 
                         src="{% static 'assets/img/logo.png' %}" alt="brand-logo" />
                     </a>
@@ -47,16 +47,16 @@
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <!-- Right side toggle and nav items -->
                     <ul class="navbar-nav me-auto mt-md-0 ">
-                        <!-- ============================================================== -->
+                        
                         <!-- Search -->
-                        <!-- ============================================================== -->
+                        
                         <p style="font-size:x-large; font-weight: bold; margin:auto; color: #FF6F0F;">Dog Community Admin Portal </p>
                         
                     </ul>  
                    
                     
                     <ul class="navbar-nav">
-                        r profile and search -->
+                        <!-- profile -->
                         <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark"
                                 href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">  Hi, {{customAdmin}}</a>
@@ -80,23 +80,23 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{% url 'adminHome' %}" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
+                                href="{% url 'adminHome' %}" aria-expanded="false"><i class="me-3 fa fa-home"
                                     aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{% url 'add_dog' %}" aria-expanded="false">
-                                <i class="me-3 fa fa-user" aria-hidden="true"></i><span class="hide-menu">
+                                <i class="me-3 fa fa-plus-square" aria-hidden="true"></i><span class="hide-menu">
                                     Add Dog For Adoption</span></a>
                         </li>
-                        <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="" aria-expanded="false"><i class="me-3 fa fa-table"
-                                    aria-hidden="true"></i><span class="hide-menu">Add Report</span></a></li> -->
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{% url 'update_dog_html' %}" aria-expanded="false"><i class="me-3 fa fa-table"
+                                    aria-hidden="true"></i><span class="hide-menu">Update Dog After Adoption</span></a></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{% url 'add_breed_html' %}" aria-expanded="false"><i class="me-3 fa fa-font"
+                                href="{% url 'add_breed_html' %}" aria-expanded="false"><i class="me-3 fa fa-paw"
                                     aria-hidden="true"></i><span class="hide-menu">Add Breed</span></a></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{% url 'add_event_html' %}" aria-expanded="false"><i class="me-3 fa fa-columns"
+                                href="{% url 'add_event_html' %}" aria-expanded="false"><i class="me-3 fa fa-calendar"
                                     aria-hidden="true"></i><span class="hide-menu">Add Event</span></a></li>
 
                         <li class="text-center p-20 upgrade-btn">
@@ -141,6 +141,35 @@
                 </div>
             </div>
 
+            <div class="container-fluid">
+                <h2 class="text-info">Welcome to Admin portal of Dog Community</h2>
+                <p class="text-info" >Total Dogs Registered : {{totalDogs}}</p>
+                <p class="text-info">Total Breeds Registered: {{totalBreeds}}</p>
+                <p class="text-info">Total Reports Registered: {{totalReports}}</p>
+                <p class="text-info">Total Events Registered: {{totalEvents}}</p>
+                <p class="text-info">Upcoming Events :</p>
+                <ol>
+                {% for event in events %}
+            
+                <li>Event Id : {{event.event_id}}</li>
+                <ul>
+                    <li class="text-info">Event Time: {{event.event_time}}</li>
+                    <li class="text-info">Event location: {{event.event_location}}</li>
+                    <li class="text-info">Event Description: {{event.event_description}}</li>
+                    <li class="text-info">Event Capacity: {{event.event_capacity}}</li>
+                    <li class="text-info">Event Image: <a target="_blank" href="/media/{{event.event_image}}">{{event.event_image}}</a></li>
+                </ul>
+                {% endfor %}
+            </ol>
+
+                <p>Here you can <a href="{% url 'add_dog' %}"><i class="fa fa-plus-square fa-spin "></i> Add Dogs</a>, <a href="{% url 'update_dog_html' %}">
+                    <i class="fa fa-table fa-spin "></i> Update Dogs</a> , <a href="{% url 'add_breed_html' %}">
+                    <i class="fa fa-paw fa-spin "></i> Add Breeds</a> and schedule an
+                    <a href="{% url 'add_event_html' %}"> <i class="fa fa-calendar fa-spin"></i> Event</a>
+                     for meetup. </p>
+
+                
+            </div>
 
             <!-- footer -->
 

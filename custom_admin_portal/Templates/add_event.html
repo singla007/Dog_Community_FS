@@ -15,7 +15,7 @@
     <title>Admin Portal | Dog Community </title>
     <link rel="canonical" href="/aboutustemplates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin-dashboard/images/favicon.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin/images/favicon.ico' %}">
     <!-- Custom CSS -->
     <link href="{% static 'admin-dashboard/css/style.min.css' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -27,27 +27,27 @@
 </head>
 
 <body>
-    <!-- ============================================================== -->
+    
     <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
+    
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
+    
     <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
+    
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
+        
         <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+        
         <header class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark" style="background-color: black; ">
                 <div class="navbar-header">
-                    <!-- Logo --> <a class="navbar-brand ms-4 ms-lg-0" href="index.html">
+                    <!-- Logo --> <a class="navbar-brand ms-4 ms-lg-0" href="{% url 'dashboard' %}">
                         <img style="margin-left: 40%;" width="60px" height="60px" 
                         src="{% static 'assets/img/logo.png' %}" alt="brand-logo" />
                     </a>
@@ -56,29 +56,29 @@
                         class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
                         href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
-                <!-- ============================================================== -->
+                
                 <!-- End Logo -->
-                <!-- ============================================================== -->
+                
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     
-                    <!-- ============================================================== -->
+                    
                     <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
+                    
                     <ul class="navbar-nav me-auto mt-md-0 ">
                         <p style="font-size:x-large; font-weight: bold; margin:auto; color: #FF6F0F;">Dog Community Admin Portal </p>
                         
                     </ul>
 
-                    <!-- ============================================================== -->
+                    
                     <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
+                    
                     <ul class="navbar-nav">
-                        <!-- ============================================================== -->
+                        
                         <!-- User profile and search -->
-                        <!-- ============================================================== -->
+                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Hi, {{user.name}}
+                                Hi, {{customAdmin}}
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -86,12 +86,12 @@
                 </div>
             </nav>
         </header>
-        <!-- ============================================================== -->
+        
         <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
+        
+        
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+        
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
@@ -100,22 +100,23 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="{% url 'adminHome' %}" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
+                            href="{% url 'adminHome' %}" aria-expanded="false"><i class="me-3 fa fa-home"
                                 aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="{% url 'add_dog' %}" aria-expanded="false">
-                            <i class="me-3 fa fa-user" aria-hidden="true"></i><span
+                            <i class="me-3 fa fa-plus-square" aria-hidden="true"></i><span
                                 class="hide-menu">Add Dog For Adoption</span></a>
                     </li>
-                    <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="" aria-expanded="false"><i class="me-3 fa fa-table"
-                                aria-hidden="true"></i><span class="hide-menu">Add Report</span></a></li> -->
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="{% url 'add_breed_html' %}" aria-expanded="false"><i class="me-3 fa fa-font"
+                        href="{% url 'update_dog_html' %}" aria-expanded="false"><i class="me-3 fa fa-table"
+                            aria-hidden="true"></i><span class="hide-menu">Update Dog After Adoption</span></a></li>
+
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="{% url 'add_breed_html' %}" aria-expanded="false"><i class="me-3 fa fa-paw"
                                 aria-hidden="true"></i><span class="hide-menu">Add Breed</span></a></li>
 
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="{% url 'add_event_html' %}" aria-expanded="false"><i class="me-3 fa fa-columns"
+                            href="{% url 'add_event_html' %}" aria-expanded="false"><i class="me-3 fa fa-calendar"
                                 aria-hidden="true"></i><span class="hide-menu">Add Event</span></a></li>
                     <li class="text-center p-20 upgrade-btn">
                         <a href="{% url 'logout' %}"
@@ -128,16 +129,16 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!-- ============================================================== -->
+        
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
+        
+        
         <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+        
         <div class="page-wrapper">
-            <!-- ============================================================== -->
+            
             <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+            
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
@@ -160,16 +161,16 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
+            
             <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
+            
+            
             <!-- Container fluid  -->
-            <!-- ============================================================== -->
+            
             <div class="container-fluid">
-                <!-- ============================================================== -->
+                
                 <!-- Start Page Content -->
-                <!-- ============================================================== -->
+                
                 <!-- Row -->
                 <div class="row">
                     <!-- Column -->
@@ -218,7 +219,7 @@
                                         <label for="event_location" class="col-md-12">Event Location</label>
                                         <div class="col-md-12">
                                             <input required type="text" placeholder="enter event location "
-                                                class="form-control ps-0 form-control-line" name="event_location"
+                                                class="form-control ps-0 form-control-line" name="event_location" autocomplete="street-address"
                                                 id="event_location">
                                                 <span id="event_location_error"></span>
                                         </div>
@@ -235,7 +236,7 @@
                                     <div class="form-group">
                                         <label for="event_duration" class="col-md-12">Event Duration in hours</label>
                                         <div class="col-md-12">
-                                            <input required type="number" placeholder="enter event duration in hours"
+                                            <input required type="number" min="0" placeholder="enter event duration in hours"
                                                 class="form-control ps-0 form-control-line" name="event_duration"
                                                 id="event_duration">
                                                 <span id="event_location_error"></span>
@@ -285,7 +286,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-12 mb-0">Event Image</label>
                                                 <div class="col-md-12">
-                                                    <input required type="file" name="event_image"
+                                                    <input required type="file" name="event_image" accept="image/x-png,image/gif,image/jpeg"
                                                     class="form-control-file  form-control">
                                                 </div>
                                             </div>
@@ -302,7 +303,7 @@
                                             <label class="col-md-12 mb-0"> </label>
                                             <div class="col-md-12">
                                                 {% for message in messages %}
-                                                <p id="messages"><b>{{message}}</b></p>
+                                                <p id="messages" class="text-info"><b>{{message}}</b></p>
                                             {% endfor %}	
                                             </div>
                                         </div>
@@ -314,40 +315,40 @@
                     <!-- Column -->
                 </div>
                 <!-- Row -->
-                <!-- ============================================================== -->
+                
                 <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
+                
+                
                 <!-- Right sidebar -->
-                <!-- ============================================================== -->
+                
                 <!-- .right-sidebar -->
-                <!-- ============================================================== -->
+                
                 <!-- End Right sidebar -->
-                <!-- ============================================================== -->
+                
             </div>
-            <!-- ============================================================== -->
+            
             <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
+            
+            
             <!-- footer -->
-            <!-- ============================================================== -->
+            
             <footer class="footer text-center">
                 ©  Dog Community  <a href="/aboutus">portal</a>
             </footer>
-            <!-- ============================================================== -->
+            
             <!-- End footer -->
-            <!-- ============================================================== -->
+            
         </div>
-        <!-- ============================================================== -->
+        
         <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
+        
     </div>
-    <!-- ============================================================== -->
+    
     <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
+    
+    
     <!-- All Jquery -->
-    <!-- ============================================================== -->
+    
     <script src="{% static 'admin-dashboard/plugins/jquery/dist/jquery.min.js' %}"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static 'admin-dashboard/plugins/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
