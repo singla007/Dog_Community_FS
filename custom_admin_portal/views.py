@@ -113,7 +113,7 @@ def add_breed(request):
             breed = Breed.objects.create(breed_name = breedname, bred_for = bred_for, life_span = life_span, temperament = temperament, origin =origin,  breed_article = breedarticle, breed_image_path = breed_image_path)
 
             if breed is not None:
-                messages.success(request, 'Success: Breed Added')
+                messages.success(request, 'Sucess: Breed Added')
                 return redirect('add_breed_html')
             else:
                 messages.error(request, 'Failure: Breed can not be added')
@@ -144,7 +144,7 @@ def register_dog(request):
             dog  = add_dog(breed_id=breed_id, is_adopted= is_adopted,dog_name= dog_name,dog_color= dog_color, dog_age= dog_age, is_disable= is_disable, disabilty=disabilty, unique_identification=unique_identification, is_adoption_ready=is_adoption_ready, dog_image=dog_image)
        
         if dog is not None:
-            messages.success(request, 'Success: Dog Added for adoption')
+            messages.success(request, 'Sucess: Dog Added for adoption')
             return redirect('add_dog')
         else:
             messages.error(request, 'Failure: Dog can not be added for adoption')
@@ -188,7 +188,7 @@ def add_event(request):
     event = Events.objects.create(event_location=event_location, event_duration=event_duration, event_time=event_time,event_capacity=event_capacity,event_description=event_description,event_image=event_image)
 
     if event is not None:
-        messages.success(request, 'Success: Event Added')
+        messages.success(request, 'Sucess: Event Added')
     else:
         messages.error(request, 'Failure: Event can not be added')
        
@@ -268,7 +268,7 @@ def update_dog(request):
         dog.save()
 
         if dog is not None:
-            messages.success(request, 'Success: Dog Updated after adoption')
+            messages.success(request, 'Sucess: Dog Updated after adoption')
             return render(request,'update_dog.html',context)
         else:
             messages.error(request, 'Failure: Dog can not be updated after adoption')
