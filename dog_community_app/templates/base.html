@@ -61,12 +61,12 @@
                         <li class="nav-item dropdown" >
                             <a href="#" class="nav-link {% if '/report_dogs' in request.path %}active{% endif %} dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Report a dog</a>
                             <div class="dropdown-menu m-0" aria-labelledby="navbarDropdownMenuLink">
-                                <a href="/report_dogs/missing" class="dropdown-item">Missing dogs</a>
-                                <a href="/report_dogs/stray" class="dropdown-item">Stray dogs</a>
+                                <a href="/report-dogs/missing" class="dropdown-item">Missing dogs</a>
+                                <a href="/report-dogs/stray" class="dropdown-item">Stray dogs</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'home' %}" class="nav-link {% if request.path == home %}active{% endif %}">Meetup</a>
+                            <a href="{% url 'meetup' %}" class="nav-link {% if 'meetup' in request.path %}active{% endif %}">Meetup</a>
                         </li>
                         <li class="nav-item">
                             <a href="{% url 'adoption' %}" class="nav-link {% if '/adoption' in request.path %}active{% endif %}">Adoption</a>
@@ -120,10 +120,10 @@
                         <h5 class="text-light mb-4">Quick Links</h5>
                         <a class="btn btn-link" href="{% url 'aboutus' %}">About Us</a>
                         <a class="btn btn-link" href="{% url 'home' %}#contactus">Contact Us</a>
-                        <a class="btn btn-link" href="{% url 'home' %}">Breed Info</a>
+                        <a class="btn btn-link" href="{% url 'breed-info' %}">Breed Info</a>
                         <a class="btn btn-link" href="/report_dogs/missing">Missing dogs</a>
                         <a class="btn btn-link" href="/report_dogs/stray">Stray dogs</a>
-                        <a class="btn btn-link" href="{% url 'home' %}">Meetup</a>
+                        <a class="btn btn-link" href="{% url 'meetup' %}">Meetup</a>
                         <a class="btn btn-link" href="{% url 'adoption' %}">Adoption</a>
                         
                     </div>

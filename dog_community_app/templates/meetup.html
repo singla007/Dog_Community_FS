@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div id="meetup">
+    <section id="hero" class="d-flex align-items-center position-relative">
+        <img class="hero-img"  src="{%static "assets/img/unsplash_hero_aboutus.png" %}" alt="Image">
+        <div class="carousel-caption">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 pt-5 mx-auto">
+                        <h1 class="display-4 text-white mb-3 animated slideInDown">Meet up with the dogs</h1>
+                        {% comment %} <p class="fs-5 text-white-50 mb-5 animated slideInDown">Search your adoptable dog from our NGO or from rescue</p> {% endcomment %}
+                        {% comment %} <div class="d-flex justify-content-center align-content-center">
+                            {% csrf_token %}
+                            <datalist id="breeds_list" >
+                                {% for breed in all_breeds %}
+                                    <option value="{{breed.breed_name}}"/>
+                                {% endfor %}
+                            </datalist>
+                            <div class="d-flex align-item-center mx-2"><input list="breeds_list" class="form-control text-center" style="width: 160px;" type="text" id="breed" name="breed" placeholder="Enter the Breed"/></div>
+                            <a href="meetup-list" class="btn btn-primary py-2 px-3 animated slideInDown" action="{% url 'meetup' %}" id="search-breed-button">
+                                Find
+                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </a>
+                        </div> {% endcomment %}
+                        <div class="d-flex justify-content-center">
+                            <div class="position-absolute bottom-0 mb-4 mx-auto" >
+                                <p class="fs-5 text-white-50 text-center animated slideInDown">Slide down to know more</p>
+                                <div id="scrollToMain" class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                    <i class="fa fa-arrow-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-fluid bg-light py-2 py-xl-3" id="main-section">
+        <section id="meetup-list" class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6 mb-5">Meeting location in Ottawa</h1>
+            </div>
+            <div class="row">
+                {% for loc in meetups %}
+                <div class="col-lg-4 col-sm-6 mb-4 px-4">
+                    <div class="card card-block">
+                        {% comment %} <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4> {% endcomment %}
+                        <img class="card-img w-100" src="{%static "" %}{{loc.event_image}}" alt="{{loc.event_image}}"/>
+                        <h5 class="card-title text-center mt-3 mb-1">{{loc.event_location}}</h5>
+                        <div class="card-body mt-1 mb-2">
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text text-center mt-2 mx-2"><b>Start Time</b>: {{loc.event_time|time:"P"}}</p>
+                                <p class="card-text text-center mt-2 mx-2"><b>Duration</b>: {{loc.event_duration}} hours</p>
+                            </div>
+                            <div class="d-flex justify-content-around align-content-center">
+                                
+                                <button onclick="$(this).meetUpContact();" data-event={{loc}} data-event-time={{loc.event_time|time:"P"}} id="report-button" class="btn btn-primary py-1 px-3 animated slideInDown">
+                                    Contact Us
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </button>
+                                <button onclick="$(this).meetUpBook();" data-event-id={{loc.event_id}} id="report-button" class="btn btn-primary py-1 px-3 animated slideInDown">
+                                    Book Meetup
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </button>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="modal fade" id="meetup-form" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form class="meetup-form" method="post" action="{% url 'meetup'%}">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" >Meetup Details</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {% for field in user_form%}
+                                        {{field}}
+                                        {{field.errors}}
+                                    {% endfor%}
+                                    <input type="hidden" name="action-meetup" value="action-meetup"/>
+                                    <input type="hidden" id="event_id" name="event_id" value=""/>  {% comment %} event_id is set by main.js by clicking Book Meetup button{% endcomment %}
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button class="btn btn-primary d-block w-50" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+{% endblock %}
