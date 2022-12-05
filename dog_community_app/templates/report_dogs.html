@@ -43,22 +43,18 @@
         <section id="report-dogs-list" class="container">
             <div class="row">
                 {% for dog in filtered_dogs %}
-                <div class="col-md-3 col-sm-6">
+                <div class="col-lg-4 col-sm-6 mb-4 px-4">
                     <div class="card card-block">
-                        <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
-                        <h5 class="card-title text-center mt-3 mb-3">{{dog.dog_name}}</h5>
-                        <img class="card-img" src="{%static "" %}{{dog.dog_image}}" alt="{{dog.dog_name}}"/>                            
-                        <p class="card-text text-center">Age: {{dog.dog_age}}</p>
-                        <p class="card-text text-center">Color: {{dog.dog_color}}</p>
-                        <div class="d-flex justify-content-center mt-5">
-                            <button onclick="$(this).adoptButton();" data-dog-id={{dog.dog_id}} data-url={%url 'report_dogs'%} id="report-button" class="btn btn-primary py-2 px-3 animated slideInDown">
-                                Adopt
-                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
-                            </button>
-                        </div>
-                        
+                        <img class="card-img w-100" src="{%static "" %}{{dog.dog_image}}" alt="{{dog.dog_name}}"/>
+                        <div class="card-img-overlay">
+                            <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
+                            <h5 class="card-title text-center mt-3 mb-1">{{dog.dog_name}}</h5>
+                            <div class="card-body mt-1 mb-2">
+                                <p class="card-text text-center mt-2 mx-2"><b>Age</b>: {{dog.dog_age}} years</p>
+                                <p class="card-text text-center mt-2 mx-2"><b>Color</b>: {{dog.dog_color}}</p>      
+                                {% if 'missing' in request.path and found_at %}<p class="card-text text-center mt-2 mx-2"><b>Found at</b>: {{found_at}}</p>{% endif %}                    
+                            </div>
+                        </div>   
                     </div>
                 </div>
                 {% endfor %}

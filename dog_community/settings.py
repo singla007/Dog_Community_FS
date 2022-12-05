@@ -83,12 +83,8 @@ WSGI_APPLICATION = 'dog_community.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dog_communitydb',
-        'USER': 'root',
-        'HOST':'localhost',
-        'PORT':'3306',
-        'PASSWORD':'Keytomysql@2'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'dog_community_db.sqlite3',
     }
 }
 
@@ -124,16 +120,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-# Email Backend
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_HOST_USER = 'jaikaushil055@gmail.com' #sender's emailid
-EMAIL_HOST_PASSWORD = 'MyDemoAccount' #password associated with above email-id
 
 
 

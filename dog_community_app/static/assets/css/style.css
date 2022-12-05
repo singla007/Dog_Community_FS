@@ -803,18 +803,14 @@ img{
     overflow: hidden;
   }
 #report-dogs
-  .card,
-#report-dogs .card-img-overlay {
+  .card .card-img-overlay {
     display: none;
   }
-  #report-dogs
-  .card:hover,
-  #report-dogs .card-img-overlay {
+  #report-dogs .card:hover .card-img-overlay {
     color: white;
     display: block;
   }
-#report-dogs .card,
-#report-dogs .card-title{  
+#report-dogs .card .card-title{  
     position: relative;
     font-size:15px;
     transition:1s;
@@ -822,15 +818,13 @@ img{
     padding:0 10px;
     z-index: 2;
   }
-  #report-dogs .card,
-  #report-dogs .card-title i{  
+  #report-dogs .card .card-title i{  
     font-size:15px;
     transition:1s;
     cursor:pointer;
     color:#ffa710
   }
-  #report-dogs .card,
-  #report-dogs .card-title i:hover{
+  #report-dogs .card .card-title i:hover{
     transform: scale(1.25) rotate(100deg); 
     color:#18d4ca;
     
@@ -840,8 +834,7 @@ img{
     transform: scale(1.05);
     box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
   }
-  #report-dogs .card,
-  #report-dogs .card-text{ 
+  #report-dogs .card .card-text{ 
     position: relative;
     padding: 0 10px;
     z-index: 2;
@@ -1023,3 +1016,95 @@ img{
     line-height: 200px;
     margin-left:-15px;
 }
+
+/* missing dog home */
+#causes 
+img{
+    height:320px;
+    width:100%;
+  }
+
+#report-button {
+    position: relative;
+    z-index: 2;
+}
+
+#causes  a {
+    color: white;
+}
+
+  #causes 
+  .card{
+    transition:0.5s;
+    cursor:pointer;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  }
+
+  #causes 
+  .card img{
+    overflow: hidden;
+  }
+#causes
+  .card .card-img-overlay {
+    display: none;
+  }
+  #causes .card:hover .card-img-overlay {
+    color: white;
+    display: block;
+  }
+#causes .card .card-title{  
+    position: relative;
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    padding:0 10px;
+    z-index: 2;
+  }
+  #causes .card .card-title i{  
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    color:#ffa710
+  }
+  #causes .card .card-title i:hover{
+    transform: scale(1.25) rotate(100deg); 
+    color:#18d4ca;
+    
+  }
+  #causes
+  .card:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  }
+  #causes .card .card-text{ 
+    position: relative;
+    padding: 0 10px;
+    z-index: 2;
+  }
+  #causes
+  .card::before, 
+  #causes .card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    background: rgba(0,0,0, 0.3);
+    content: '';
+    pointer-events: none;
+  }
+  #causes 
+  .card::before {
+    transform-origin: left top;
+  }
+  #causes
+  .card::after {
+    transform-origin: right bottom;
+  }
+  #causes
+  .card:hover::before, #causes .card:hover::after, #causes .card:focus::before,  #causes .card:focus::after {
+    transform: scale3d(1, 1, 1);
+  }
