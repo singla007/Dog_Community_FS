@@ -90,11 +90,6 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {% comment %} <datalist id="dog_list" >
-                                        {% for dog in adoption_dog_list %}
-                                            <option value="{{dog.dog_name}}"/>
-                                        {% endfor %}
-                                    </datalist> {% endcomment %}
                                     {% for field in adoption_dog_form%}
                                         {{field}}
                                         {{field.errors}}

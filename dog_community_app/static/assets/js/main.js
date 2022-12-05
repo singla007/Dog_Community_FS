@@ -305,18 +305,19 @@
             mailBody['email_subject'] = `Rescued dog from ${data.event_location}`
         }
         var url = 'https://prod-12.canadacentral.logic.azure.com:443/workflows/83e44d334b814c69a103323e596dd428/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VmVmf4Q-slQQW7i2sibJUhw4-fblPmmHBZ-mAAHYgNg'
-        $.ajax({
-            url: url,
-            data: JSON.stringify(mailBody),
-            method:'POST',
-            contentType: 'application/json',
-            success: function( data ) {
-                console.log(data + "success")
-            },
-            error: function (request, status, error) {
-                console.log(request.responseText);
-            }
-        })
+        console.log(mailBody)
+        // $.ajax({
+        //     url: url,
+        //     data: JSON.stringify(mailBody),
+        //     method:'POST',
+        //     contentType: 'application/json',
+        //     success: function( data ) {
+        //         console.log(data + "success")
+        //     },
+        //     error: function (request, status, error) {
+        //         console.log(request.responseText);
+        //     }
+        // })
     }
 
 })(jQuery);

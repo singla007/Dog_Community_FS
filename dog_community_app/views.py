@@ -20,12 +20,12 @@ def home_view(request):
     context = {}
     contact_form = ContactUsForm(request.POST or None)
     context['contact_form'] = contact_form
-    # if(request.GET and request.GET['contactmessage']):
-    #     print(request.GET['contactmessage'])
-    # print(request.GET.get("contactmessage"))
-    # if request.GET.getlist("contact-message"):
-    #     print("checking")
-    #     contact_form = ContactUsForm(request.POST or None, initial={'message': request.GET.getlist("contact-message")})
+    missing_dogs =[]
+    for dog_r in Reports.objects.filter(category='missing'):
+        for dog in Dogs.objects.filter(dog_id=dog_r.dog_id):
+            context['found_at'] = dog_r.last_known_location
+            missing_dogs.append(dog)
+    context['missing_dogs'] = missing_dogs
     if('action-contact' in request.POST):
         if(contact_form.is_valid()):
             contact_form.save()
@@ -55,11 +55,13 @@ def report_dogs_view(request, type):
     context = {}
     context['report_type'] = type
     context['all_breeds'] = Breed.objects.all()
-    filtered_dogs=[]
-    if type == 'missing':
-        for dog_r in Reports.objects.filter(category=type):
-            for dog in Dogs.objects.filter(dog_id=dog_r.dog_id):
-                
+    dog_a=[]
+    
+    for dog_r in Reports.objects.filter(category=type):
+        for dog in Dogs.objects.filter(dog_id=dog_r.dog_id):
+            context['found_at'] = dog_r.last_known_location
+            dog_a.append(dog)
+    context['filtered_dogs'] = dog_a
     
     return render(request, "report_dogs.html", context)
 
@@ -190,7 +192,6 @@ def adoption_view(request):
                 dog_id = dog.dog_id
             
             return redirect('adoption-success', id=dog_id, user_id=user_id)
-            # Adoption.objects.create(dog_id=dog_id,user_id=user_id)
     return render(request, "adoption.html", context)
 
 def success_view(request, user_id, id):
@@ -198,6 +199,7 @@ def success_view(request, user_id, id):
     print(id,user_id,request.path)
     data = {}
     user_email = ''
+    user_name = ''
     if int(id)>-1 and int(user_id)>-1:
         if 'meetup/success' in request.path:
             context['action'] = 'meetup'

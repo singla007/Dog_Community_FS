@@ -45,6 +45,7 @@
                 </div>
             </div>
         </div>
+        
         <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -60,35 +61,37 @@
 <!-- Carousel End -->
 
 <!-- Causes Start -->
-<div class="container-fluid bg-light py-3">
+<div class="container-fluid bg-light py-3" id="main-section">
     <section id="causes" class="container py-5">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Have you seen me?</div>
             <h1 class="display-6 mb-5">Every dog deserves to live better</h1>
         </div>
         <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            {% for dog in missing_dogs %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1s">
                 <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
                     <div class="text-center p-4 pt-0">
                         <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                            <small>Cherry</small>
+                            <small>{{dog.dog_name}}</small>
                         </div>
-                        <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
                     </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="{%static "assets/img/missing-dog-1.jpg" %}" alt="">
-                        <div class="causes-overlay">
-                            <a class="btn btn-outline-primary" href="">
-                                Read More
-                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="card card-block">
+                        <img class="card-img w-100" src="{%static "" %}{{dog.dog_image}}" alt="{{dog.dog_name}}"/>
+                        <div class="card-img-overlay">
+                            <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
+                            <h5 class="card-title text-center mt-3 mb-1">{{dog.dog_name}}</h5>
+                            <div class="card-body mt-1 mb-2">
+                                <p class="card-text text-center mt-2 mx-2"><b>Age</b>: {{dog.dog_age}} years</p>
+                                <p class="card-text text-center mt-2 mx-2"><b>Color</b>: {{dog.dog_color}}</p>      
+                                {% if found_at %}<p class="card-text text-center mt-2 mx-2"><b>Found at</b>: {{found_at}}</p>{% endif %}                    
+                            </div>
+                        </div>   
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            {% endfor %}
+            {% comment %} <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
                     <div class="text-center p-4 pt-0">
                         <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
@@ -129,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </section>
 </div>
