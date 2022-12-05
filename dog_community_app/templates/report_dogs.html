@@ -36,7 +36,7 @@
         <section id="report-dogs-top" class="container py-2">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">Reported Dogs</div>
-                <h1 class="display-6 mb-5">{% if 'missing' in request.path %}Have you seen me?{% else %}Stray dogs we saved</h1>
+                <h1 class="display-6 mb-5">{% if 'missing' in request.path %}Have you seen me?{% else %}Stray dogs we saved{% endif %}</h1>
             </div>
             {% csrf_token %}            
         </section>
@@ -47,9 +47,7 @@
                     <div class="card card-block">
                         <h4 class="card-title d-flex justify-content-end mt-2"><i class="fa fa-paw" aria-hidden="true"></i></h4>
                         <h5 class="card-title text-center mt-3 mb-3">{{dog.dog_name}}</h5>
-                        <img class="card-img" src="{%static "" %}{{dog.dog_image}}" alt="{{dog.dog_name}}"/>
-                            
-                            
+                        <img class="card-img" src="{%static "" %}{{dog.dog_image}}" alt="{{dog.dog_name}}"/>                            
                         <p class="card-text text-center">Age: {{dog.dog_age}}</p>
                         <p class="card-text text-center">Color: {{dog.dog_color}}</p>
                         <div class="d-flex justify-content-center mt-5">

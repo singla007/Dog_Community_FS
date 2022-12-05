@@ -55,12 +55,13 @@ def report_dogs_view(request, type):
     context = {}
     context['report_type'] = type
     context['all_breeds'] = Breed.objects.all()
-    filtered_dogs=[]
+    filtered_dogs = []
     if type == 'missing':
-        for dog_r in Reports.objects.filter(category=type):
-            for dog in Dogs.objects.filter(dog_id=dog_r.dog_id):
-                
-    
+        dog_a=[]
+        # for dog_r in Reports.objects.filter(category=type):
+        #     for dog in Dogs.objects.filter(dog_id=dog_r.dog_id):
+        #         dog_a.append(dog)
+        # print(dog_a)
     return render(request, "report_dogs.html", context)
 
 def report_dogs_form_view(request, type):
@@ -198,6 +199,7 @@ def success_view(request, user_id, id):
     print(id,user_id,request.path)
     data = {}
     user_email = ''
+    user_name = ''
     if int(id)>-1 and int(user_id)>-1:
         if 'meetup/success' in request.path:
             context['action'] = 'meetup'
