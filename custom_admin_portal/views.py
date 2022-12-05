@@ -264,6 +264,7 @@ def update_dog(request):
         dog = Dogs.objects.get(dog_id=dog_id)
         dog.is_adopted = isAdopted
         dog.is_featured  = isAdopted
+        dog.is_adoption_ready = not isAdopted
         dog.save()
 
         if dog is not None:
@@ -275,9 +276,9 @@ def update_dog(request):
         return render(request,'update_dog.html',context)
     return redirect('update_dog_html')   
 def getUserName(request):
-    name = request.user  
+    name = str(request.user)  
     if(request.user is not None):
         if request.user.get_full_name() != '':
-            name = request.user.get_full_name() 
+            name = str(request.user.get_full_name())
     return name.title()
 
