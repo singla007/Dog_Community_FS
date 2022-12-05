@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="jumbotron text-center" id="success-page">
+    <div style="border-radius:200px; height:200px; width:200px; background: #F5DBBB; margin:0 auto;" class="d-flex justify-content-center align-content-center">
+        <i class="checkmark">✓</i>
+    </div>
+    <h1 class="display-3">Thank You!</h1>
+    <p class="lead"><strong>Please check your email</strong> for the details. Hope to see you soon!</p>
+    <p>
+        Having trouble? <a href="{% url 'home' %}#contact-us">Contact us</a>
+    </p>
+    <input name="callJSSuccess" id="formSuccess" type="hidden" onchange="$(this).formSuccess({{id}},'{{action}}',{{data}}, '{{user_email}}', '{{user_name}}');" value=""/>
+    <script type="text/javascript"> 
+        setTimeout(function() {
+            var formElement = document.getElementById("formSuccess")
+            formElement.setAttribute('value','Update field onload');
+            formElement.dispatchEvent(new Event('change'))
+        }, 3000)
+        
+      </script>
+    <p class="lead">
+        <a class="btn btn-primary btn-sm" href="{% url 'home' %}" role="button">Continue to homepage</a>
+    </p>
+</div>
+{% endblock %}

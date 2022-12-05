@@ -10,6 +10,11 @@
     color: rgb(255,111,15) !important;
 }
 
+div [class^="col-"]{
+    padding-left:15px;
+    padding-right:15px;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -118,6 +123,11 @@ img{
     transition: opacity .5s ease-out, visibility 0s linear 0s;
     visibility: visible;
     opacity: 1;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: gray;
+    opacity: 1; /* Firefox */
 }
 
 
@@ -295,6 +305,12 @@ img{
 
 .page-header .breadcrumb-item+.breadcrumb-item::before {
     color: #999999;
+}
+
+#hero .hero-img {
+    width: 100%;
+    object-fit: cover;
+    height: 100vh;
 }
 
 
@@ -587,6 +603,7 @@ img{
   #adoption 
   .card img{
     overflow: hidden;
+    width: 100%;
   }
 #adoption
   .card .card-img-overlay {
@@ -597,8 +614,7 @@ img{
     color: white;
     display: block;
   }
-#adoption .card
-  .card-title{  
+#adoption .card .card-title{  
     position: relative;
     font-size:15px;
     transition:1s;
@@ -606,15 +622,13 @@ img{
     padding:0 10px;
     z-index: 2;
   }
-  #adoption .card
-  .card-title i{  
+  #adoption .card .card-title i{  
     font-size:15px;
     transition:1s;
     cursor:pointer;
     color:#ffa710
   }
-  #adoption .card
-  .card-title i:hover{
+  #adoption .card .card-title i:hover{
     transform: scale(1.25) rotate(100deg); 
     color:#18d4ca;
     
@@ -624,14 +638,15 @@ img{
     transform: scale(1.05);
     box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
   }
-  #adoption .card
+  #adoption .card 
   .card-text{ 
     position: relative;
     padding: 0 10px;
     z-index: 2;
   }
   #adoption
-  .card::before, .card::after {
+  .card::before, 
+  #adoption .card::after {
     position: absolute;
     top: 0;
     right: 0;
@@ -652,7 +667,7 @@ img{
     transform-origin: right bottom;
   }
   #adoption
-  .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+  .card:hover::before, #adoption .card:hover::after, #adoption .card:focus::before, #adoption .card:focus::after {
     transform: scale3d(1, 1, 1);
   }
 
@@ -678,23 +693,23 @@ img{
   .card{
     transition:0.5s;
     cursor:pointer;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    /* transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12); */
   }
 
   #breed-info 
   .card img{
     overflow: hidden;
+    width: 100%;
   }
-#breed-info
-  .card .card-img-overlay {
+#breed-info .card .card-img-overlay {
     display: none;
   }
-  #breed-info
-  .card:hover .card-img-overlay {
+  #breed-info .card:hover .card-img-overlay {
     color: white;
     display: block;
   }
-#breed-info .card
-  .card-title{  
+#breed-info .card .card-title{  
     position: relative;
     font-size:15px;
     transition:1s;
@@ -702,26 +717,23 @@ img{
     padding:0 10px;
     z-index: 2;
   }
-  #breed-info .card
-  .card-title i{  
+  #breed-info .card .card-title i{  
     font-size:15px;
     transition:1s;
     cursor:pointer;
     color:#ffa710
   }
-  #breed-info .card
-  .card-title i:hover{
+
+  #breed-info .card-title i:hover{
     transform: scale(1.25) rotate(100deg); 
     color:#18d4ca;
     
   }
-  #breed-info
-  .card:hover{
+  #breed-info .card:hover{
     transform: scale(1.05);
     box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
   }
-  #breed-info .card
-  .card-text{ 
+  #breed-info .card .card-text{ 
     position: relative;
     padding: 0 10px;
     z-index: 2;
@@ -734,8 +746,8 @@ img{
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  #breed-info
-  .card::before, .card::after {
+  #breed-info .card::before, 
+  #breed-info .card::after {
     position: absolute;
     top: 0;
     right: 0;
@@ -756,13 +768,112 @@ img{
     transform-origin: right bottom;
   }
   #breed-info
-  .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+  .card:hover::before, #breed-info .card:hover::after, #breed-info .card:focus::before, #breed-info .card:focus::after {
     transform: scale3d(1, 1, 1);
   }
 
 
 /* report dog */
-#report-dogs {
+
+#report-dogs 
+img{
+    height:320px;
+    width:100%;
+  }
+
+#report-button {
+    position: relative;
+    z-index: 2;
+}
+
+#report-dogs  a {
+    color: white;
+}
+
+  #report-dogs 
+  .card{
+    transition:0.5s;
+    cursor:pointer;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  }
+
+  #report-dogs 
+  .card img{
+    overflow: hidden;
+  }
+#report-dogs
+  .card,
+#report-dogs .card-img-overlay {
+    display: none;
+  }
+  #report-dogs
+  .card:hover,
+  #report-dogs .card-img-overlay {
+    color: white;
+    display: block;
+  }
+#report-dogs .card,
+#report-dogs .card-title{  
+    position: relative;
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    padding:0 10px;
+    z-index: 2;
+  }
+  #report-dogs .card,
+  #report-dogs .card-title i{  
+    font-size:15px;
+    transition:1s;
+    cursor:pointer;
+    color:#ffa710
+  }
+  #report-dogs .card,
+  #report-dogs .card-title i:hover{
+    transform: scale(1.25) rotate(100deg); 
+    color:#18d4ca;
+    
+  }
+  #report-dogs
+  .card:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  }
+  #report-dogs .card,
+  #report-dogs .card-text{ 
+    position: relative;
+    padding: 0 10px;
+    z-index: 2;
+  }
+  #report-dogs
+  .card::before, 
+  #report-dogs .card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale3d(0, 0, 1);
+    transition: transform .3s ease-out 0s;
+    background: rgba(0,0,0, 0.3);
+    content: '';
+    pointer-events: none;
+  }
+  #report-dogs 
+  .card::before {
+    transform-origin: left top;
+  }
+  #report-dogs
+  .card::after {
+    transform-origin: right bottom;
+  }
+  #report-dogs
+  .card:hover::before, #report-dogs .card:hover::after, #report-dogs .card:focus::before,  #report-dogs .card:focus::after {
+    transform: scale3d(1, 1, 1);
+  }
+
+#report-dogs-form {
     background-image: url("../img/SL-100420-36140-29.jpg");
     /* background-color: #2FB9CB;
     background-blend-mode: multiply; */
@@ -776,11 +887,11 @@ img{
     background-size: cover;
     overflow: hidden;
 }
-.report-dogs {
+.report-dogs-form {
     margin-top: 200px;
 }
 
-#report-dogs .report-tag {
+#report-dogs-form .report-tag {
     background-color: var(--primary);
     color: white;
     padding-bottom: 10px;
@@ -842,3 +953,73 @@ img{
     }
 }
 
+/* meetups */
+#meetup 
+.card{
+  transition:0.5s;
+  cursor:pointer;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+#meetup 
+.card img{
+  overflow: hidden;
+}
+
+#meetup .card
+.card-title{  
+  position: relative;
+  transition:1s;
+  cursor:pointer;
+  padding:0 10px;
+  z-index: 2;
+}
+#meetup .card
+.card-title i{  
+  font-size:15px;
+  transition:1s;
+  cursor:pointer;
+  color:#ffa710
+}
+#meetup
+.card:hover{
+  transform: scale(1.05);
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+#meetup .card
+#meetup
+.card-text{ 
+  position: relative;
+  padding: 0 10px;
+  z-index: 2;
+}
+#meetup #meetup-list .card-img{
+    height: 220px;
+}
+
+/* #meetup 
+.card::before {
+    transform-origin: left top;
+}
+#meetup
+.card::after {
+    transform-origin: right bottom;
+} */
+#meetup
+.card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+    transform: none;
+}
+
+#success-page {
+    height: 100vh;
+    top: 25%;
+    position: relative;
+}
+
+#success-page i {
+    color: var(--primary);
+    font-size: 100px;
+    line-height: 200px;
+    margin-left:-15px;
+}

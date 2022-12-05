@@ -71,8 +71,9 @@ TEMPLATES = [
 ]
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT =BASE_DIR / 'media'
+MEDIA_URL = 'assets/img/'
+MEDIA_ROOT =BASE_DIR / 'dog_community_app/static/'
+SESSION_SAVE_EVERY_REQUEST = True
 
 WSGI_APPLICATION = 'dog_community.wsgi.application'
 
@@ -123,6 +124,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Email Backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'jaikaushil055@gmail.com' #sender's emailid
+EMAIL_HOST_PASSWORD = 'MyDemoAccount' #password associated with above email-id
+
 
 
 # Static files (CSS, JavaScript, Images)

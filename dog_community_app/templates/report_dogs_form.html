@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container-container-fluid position-relative" id="report-dogs-form" >
+    <div class="row d-flex justify-content-center report-dogs-form">
+        <div class="col-md-6 col-lg-6 col-xl-5 col-xxl-6">
+            <div class="mb-5 d-flex justify-content-center">
+                <div class="p-sm-4 report-card">
+                    {% if 'missing' in request.path %}
+                        <h3 class="text-center mb-4 pb-2 report-tag">Missing Dog Information</h3>
+                        <img class="missing-dog-image" src="{%static "assets/img/richard-brutyo-Sg3XwuEpybU-unsplash-removebg-preview.png" %}" alt="Image">
+                    {% else %}
+                        <h3 class="text-center mb-4 pb-2 report-tag">Stray Dog Information</h3>
+                        <img class="stray-dog-image" src="{%static "assets/img/stray-dogs.png" %}" alt="Image">
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data">     
+                        {% csrf_token %} 
+                        {% if 'missing' in request.path%}
+                            {% for field in user_details%}
+                                {{field}}
+                                {{field.errors}}
+                            {% endfor%}
+                        {% endif %}
+                        {% for field in dog_last_location%}
+                            {{field}}
+                            {{field.errors}}
+                        {% endfor%}
+                        {% for field in dog_details%}
+                            {% if field.name == "dog_image" %}<label class="mb-2 mt-3 mx-2" for="image_field">Upload dog's image here</label>{% endif %}
+                            {% if field.name == "breed" %}<label class="mb-2 mt-2 mx-2" for="id_breed">Select the dog's breed from list</label>{% endif %}
+                            <div class="d-flex">
+                                {{field}} {% if field.label == "Is disable"%}<label class="form-check-label mx-2 mt-1" for="id_is_disable">Is dog has disabilities?</label>{% endif%}
+                            </div>
+                            {{field.errors}}
+                        {% endfor%}
+                        <input type="hidden" name="action-report" value="action-report"/>
+                        <div><button class="btn btn-primary d-block w-100" type="submit">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
